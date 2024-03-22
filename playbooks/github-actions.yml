@@ -1,0 +1,12 @@
+---
+- name: Media Server
+  hosts: localhost
+  roles:
+    - role: compscidr.media_server.flaresolverr
+    - role: compscidr.media_server.jackett
+    - role: compscidr.media_server.ombi
+    - role: compscidr.media_server.plex
+    - role: compscidr.media_server.prowlarr
+    - role: compscidr.media_server.radarr
+    - role: compscidr.media_server.sonarr
+    - role: compscidr.media_server.transmission

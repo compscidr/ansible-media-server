@@ -1,0 +1,38 @@
+---
+- name: Ensure docker is installed on the target system
+  tags: docker
+  ansible.builtin.include_role:
+    name: nickjj.docker
+    apply:
+      become: true # without this, it will end up failing and retrying over and over to install deps
+  when: install_docker
+  
+- name: Create Jacket Directories
+  tags: jackett
+  become: true
+  ansible.builtin.file:
+    path: /etc/jackett
+    state: directory
+    mode: '755'
+    owner: root
+    group: root
+  
+- name: Deploy jackett
+  tags: jackett
+  become: true
+  community.docker.docker_container:
+    name: jackett
+    image:  lscr.io/linuxserver/jackett:latest
+    pull: true
+    volumes:
+      - "/etc/jackett:/config:rw"
+      - "/storage/downloads:/downloads:rw"
+    ports:
+      - "9117:9117"
+    env:
+      TZ: "America/Los_Angeles"
+      PUID: "1000"
+      PGID: "1000"
+      AUTO_UPDATE: "true"
+    restart_policy: unless-stopped
+    memory: "1g"
