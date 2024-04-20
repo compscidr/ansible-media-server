@@ -1,0 +1,39 @@
+---
+- name: Ensure docker is installed on the target system
+  tags: docker
+  ansible.builtin.include_role:
+    name: nickjj.docker
+    apply:
+      become: true # without this, it will end up failing and retrying over and over to install deps
+  when: install_docker
+  
+- name: Create Sabnzbd Directories
+  tags: sabnzbd
+  become: true
+  ansible.builtin.file:
+    path: "{{ sabnzbd_folder }}"
+    state: directory
+    mode: '755'
+    owner: root
+    group: root
+  
+- name: Deploy sabnzbd
+  tags: sabnzbd
+  become: true
+  community.docker.docker_container:
+    name: sabnzbd
+    image:  lscr.io/linuxserver/sabnzbd:latest
+    pull: true
+    volumes:
+      - "{{ sabnzbd_folder }}/config:rw"
+      - "{{ sabnzbd_download_folder }}:/downloads:rw"
+      - "{{ sabnzbd_incomplete_download_folder }}:/incomplete-downloads:rw"
+    ports:
+      - "{{ sabnzbd_port }}:8080"
+    env:
+      TZ: "{{ sabnzbd_tz }}"
+      PUID: "{{ sabnzbd_pid }}"
+      PGID: "{{ sabnzbd_gid }}"
+      AUTO_UPDATE: "true"
+    restart_policy: unless-stopped
+    memory: "1g"
