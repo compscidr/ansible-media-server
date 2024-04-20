@@ -19,4 +19,6 @@ galaxy_info:
     - docker
     - hosted
 dependencies:
-  - nickjj.docker: "v2.4.0"
+  - src: nickjj.docker
+    version: "v2.4.0"
+    name: nickjj.docker
