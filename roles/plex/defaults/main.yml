@@ -6,3 +6,5 @@ plex_movies_folder: /storage/movies
 plex_tz: "America/Los_Angeles"
 plex_pid: "1000"
 plex_gid: "1000"
+plex_dvb_devices: false
+plex_dri_devices: false

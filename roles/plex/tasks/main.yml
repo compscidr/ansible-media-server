@@ -17,7 +17,74 @@
     owner: root
     group: root
 
-- name: Deploy plex
+- name: Deploy plex without devices
+  tags: plex
+  become: true
+  community.docker.docker_container:
+    name: plex
+    image: lscr.io/linuxserver/plex:latest
+    pull: true
+    ports:
+      - "{{ plex_port }}:32400"
+    volumes:
+      - "{{ plex_folder }}:/config:rw"
+      - "{{ plex_tv_folder }}:/tv:rw"
+      - "{{ plex_movies_folder }}:/movies:rw"
+    env:
+      TZ: "{{ plex_tz }}"
+      PUID: "{{ plex_pid }}"
+      PGID: "{{ plex_gid }}"
+    restart_policy: unless-stopped
+    memory: "1g"
+  when: (not plex_dvb_devices) and (not plex_dri_devices)
+
+- name: Deploy plex with dvb devices
+  tags: plex
+  become: true
+  community.docker.docker_container:
+    name: plex
+    image: lscr.io/linuxserver/plex:latest
+    pull: true
+    ports:
+      - "{{ plex_port }}:32400"
+    volumes:
+      - "{{ plex_folder }}:/config:rw"
+      - "{{ plex_tv_folder }}:/tv:rw"
+      - "{{ plex_movies_folder }}:/movies:rw"
+    devices:
+      - /dev/dvb:/dev/dvb
+    env:
+      TZ: "{{ plex_tz }}"
+      PUID: "{{ plex_pid }}"
+      PGID: "{{ plex_gid }}"
+    restart_policy: unless-stopped
+    memory: "1g"
+  when: plex_dvb_devices and (not plex_dri_devices)
+
+- name: Deploy plex with dri devices
+  tags: plex
+  become: true
+  community.docker.docker_container:
+    name: plex
+    image: lscr.io/linuxserver/plex:latest
+    pull: true
+    ports:
+      - "{{ plex_port }}:32400"
+    volumes:
+      - "{{ plex_folder }}:/config:rw"
+      - "{{ plex_tv_folder }}:/tv:rw"
+      - "{{ plex_movies_folder }}:/movies:rw"
+    devices:
+      - /dev/dri:/dev/dri
+    env:
+      TZ: "{{ plex_tz }}"
+      PUID: "{{ plex_pid }}"
+      PGID: "{{ plex_gid }}"
+    restart_policy: unless-stopped
+    memory: "1g"
+  when: (not plex_dvb_devices) and plex_dri_devices
+
+- name: Deploy plex with dri and dvb devices
   tags: plex
   become: true
   community.docker.docker_container:
@@ -39,3 +106,4 @@
       PGID: "{{ plex_gid }}"
     restart_policy: unless-stopped
     memory: "1g"
+  when: plex_dvb_devices and plex_dri_devices
