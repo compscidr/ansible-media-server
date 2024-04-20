@@ -21,6 +21,7 @@
   tags: radarr
   become: true
   community.docker.docker_container:
+    name: radarr
     image: ghcr.io/radarr/radarr:latest
     pull: true
     ports:

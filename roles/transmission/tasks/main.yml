@@ -21,6 +21,7 @@
   tags: transmision
   become: true
   community.docker.docker_container:
+    name: transmission
     image: haugene/transmission-openvpn:latest
     pull: true
     ports:

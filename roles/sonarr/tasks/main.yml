@@ -21,6 +21,7 @@
   tags: sonarr
   become: true
   community.docker.docker_container:
+    name: sonarr
     image: ghcr.io/sonarr/sonarr:latest
     pull: true
     ports:

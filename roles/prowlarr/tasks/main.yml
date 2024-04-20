@@ -21,6 +21,7 @@
   tags: prowlarr
   become: true
   community.docker.docker_container:
+    name: prowlarr
     image: lscr.io/linuxserver/prowlarr:latest
     pull: true
     ports:
