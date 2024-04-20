@@ -6,7 +6,7 @@ authors:
 description: A collection of roles for running a media server in docker containers - sonarr, radarr, plex, ombi, transmission, etc
 license_file: LICENSE
 readme: README.md
-version: 0.0.13
+version: 0.0.14
 repository: https://github.com/compscidr/ansible-media-server
 tags:
     - docker
