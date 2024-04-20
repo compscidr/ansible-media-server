@@ -11,7 +11,7 @@
   tags: transmision
   become: true
   ansible.builtin.file:
-    path: "{{ transmision_folder }}"
+    path: "{{ transmission_folder }}"
     state: directory
     mode: '755'
     owner: root
