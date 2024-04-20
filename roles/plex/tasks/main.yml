@@ -21,6 +21,7 @@
   tags: plex
   become: true
   community.docker.docker_container:
+    name: plex
     image: lscr.io/linuxserver/plex:latest
     pull: true
     ports:
