@@ -22,7 +22,7 @@
   become: true
   community.docker.docker_container:
     name: radarr
-    image: ghcr.io/radarr/radarr:latest
+    image: lscr.io/linuxserver/radarr:latest
     pull: true
     ports:
       - "{{ radarr_port }}:7878"

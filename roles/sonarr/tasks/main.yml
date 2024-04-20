@@ -22,7 +22,7 @@
   become: true
   community.docker.docker_container:
     name: sonarr
-    image: ghcr.io/sonarr/sonarr:latest
+    image: lscr.io/linuxserver/sonarr:latest
     pull: true
     ports:
       - "{{ sonarr_port }}:8989"
