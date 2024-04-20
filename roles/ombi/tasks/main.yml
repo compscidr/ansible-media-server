@@ -19,6 +19,7 @@
   tags: ombi
   become: true
   community.docker.docker_container:
+    name: ombi
     image: 
     pull: true
     ports:
