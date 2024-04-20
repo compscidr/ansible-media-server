@@ -11,7 +11,7 @@
   tags: sonarr
   become: true
   ansible.builtin.file:
-    path: /etc/sonarr
+    path: "{{ sonarr_folder }}"
     state: directory
     mode: '755'
     owner: root
@@ -24,10 +24,14 @@
     image: ghcr.io/sonarr/sonarr:latest
     pull: true
     ports:
-      - "8989:8989"
+      - "{{ sonarr_port }}:8989"
     volumes:
-      - "/storage/tv:/tv:rw"
-      - "/storage/downloads:/data:rw"
-      - "/etc/sonar/config:rw"
+      - "{{ sonarr_tv_folder }}:/tv:rw"
+      - "{{ sonarr_downloads_folder }}:/data:rw"
+      - "{{ sonarr_folder }}:/config:rw"
+    env:
+      TZ: "{{ sonarr_tz }}"
+      PUID: "{{ sonarr_pid }}"
+      PGID: "{{ sonarr_gid }}"
     restart_policy: unless-stopped
     memory: 1g

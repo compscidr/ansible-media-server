@@ -1,1 +1,4 @@
 install_docker: false
+flare_port: 8192
+flare_captcha_solver: hcaptcha-solver
+flare_tz: America/Los_Angeles

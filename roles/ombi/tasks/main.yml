@@ -12,7 +12,7 @@
   become: true
   ansible.builtin.file:
     mode: '755'
-    path: /etc/ombi
+    path: "{{ ombi_folder }}"
     state: directory
   
 - name: Deploy ombi
@@ -22,8 +22,12 @@
     image: 
     pull: true
     ports:
-      - "3579:3579"
+      - "{{ ombi_port }}:3579"
     volumes:
-      - "/etc/ombi:/config:rw"
+      - "{{ ombi_folder }}:/config:rw"
+    env:
+      TZ: "{{ ombi_tz }}"
+      PUID: "{{ ombi_pid }}"
+      PGID: "{{ ombi_gid }}"
     restart_policy: unless-stopped
     memory: "1g"

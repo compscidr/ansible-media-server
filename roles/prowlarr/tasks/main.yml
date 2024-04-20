@@ -11,7 +11,7 @@
   tags: prowlarr
   become: true
   ansible.builtin.file:
-    path: /etc/prowlarr
+    path: "{{ prowlarr_folder }}"
     state: directory
     mode: '755'
     owner: root
@@ -24,8 +24,12 @@
     image: lscr.io/linuxserver/prowlarr:latest
     pull: true
     ports:
-      - "9696:9696"
+      - "{{ prowlarr_port }}:9696"
      volumes:
-      - "/etc/prowlarr:/config:rw"
+      - "{{ prowlarr_folder }}:/config:rw"
+    env:
+      TZ: "{{ prowlarr_tz }}"
+      PUID: "{{ prowlarr_pid }}"
+      PGID: "{{ prowlarr_gid }}"
     restart_policy: unless-stopped
     memory: "1g"

@@ -14,8 +14,9 @@
     image: ghcr.io/flaresolverr/flaresolverr:latest
     pull: true
     ports:
-      - "8191:8191"
+      - "{{ flare_port }}:8191"
     env:
-      CAPTCHA_SOLVER: "hcaptcha-solver"
+      CAPTCHA_SOLVER: "{{ flare_captcha_solver }}"
+      TZ: "{{ flare_tz }}"
     restart_policy: unless-stopped
     memory: "1g"

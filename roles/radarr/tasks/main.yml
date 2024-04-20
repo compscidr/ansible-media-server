@@ -11,7 +11,7 @@
   tags: radarr
   become: true
   ansible.builtin.file:
-    path: /etc/radarr
+    path: "{{ radarr_folder }}"
     state: directory
     mode: '755'
     owner: root
@@ -24,10 +24,14 @@
     image: ghcr.io/radarr/radarr:latest
     pull: true
     ports:
-      - "7878:7878"
+      - "{{ radarr_port }}:7878"
     volumes:
-      - "/storage/movies:/movies:rw"
-      - "/storage/downloads:/data:rw"
-      - "/etc/radarr:/config:rw"
+      - "{{ radarr_movies_folder }}:/movies:rw"
+      - "{{ radarr_downloads_folder }}:/data:rw"
+      - "{{ radarr_folder }}:/config:rw"
+    env:
+      TZ: "{{ radarr_tz }}"
+      PUID: "{{ radarr_pid }}"
+      PGID: "{{ radarr_gid }}"
     restart_policy: unless-stopped
     memory: 1g

@@ -6,7 +6,17 @@
     apply:
       become: true # without this, it will end up failing and retrying over and over to install deps
   when: install_docker
-  
+
+- name: Create Transmission Directories
+  tags: transmision
+  become: true
+  ansible.builtin.file:
+    path: "{{ transmision_folder }}"
+    state: directory
+    mode: '755'
+    owner: root
+    group: root
+
 - name: Deploy transmision
   tags: transmision
   become: true
@@ -14,11 +24,17 @@
     image: haugene/transmission-openvpn:latest
     pull: true
     ports:
-      - "9091:9091"
+      - "{{ transmission_port }}:9091"
     restart_policy: unless-stopped
     devices:
       - /dev/net/tun
     capabilities:
       - NET_ADMIN
     volumes:
-      - /storage/downloads:/data
+      - "{{ transmission_downloads_folder }}:/data"
+      - "{{ transmission_folder }}:/config"
+    env:
+      TZ: "{{ transmission_tz }}"
+      PUID: "{{ transmission_pid }}"
+      PGID: "{{ transmission_gid }}"
+    env_file: "{{ transmission_env_file }}"

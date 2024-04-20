@@ -11,7 +11,7 @@
   tags: jackett
   become: true
   ansible.builtin.file:
-    path: /etc/jackett
+    path: "{{ jackett_folder }}"
     state: directory
     mode: '755'
     owner: root
@@ -25,14 +25,14 @@
     image:  lscr.io/linuxserver/jackett:latest
     pull: true
     volumes:
-      - "/etc/jackett:/config:rw"
-      - "/storage/downloads:/downloads:rw"
+      - "{{ jackett_folder }}/config:rw"
+      - "{{ jackett_download_folder }}:/downloads:rw"
     ports:
-      - "9117:9117"
+      - "{{ jackett_port }}:9117"
     env:
-      TZ: "America/Los_Angeles"
-      PUID: "1000"
-      PGID: "1000"
+      TZ: "{{ jackett_tz }}"
+      PUID: "{{ jackett_pid }}"
+      PGID: "{{ jackett_gid }}"
       AUTO_UPDATE: "true"
     restart_policy: unless-stopped
     memory: "1g"
