@@ -26,6 +26,14 @@
     pull: true
     ports:
       - "{{ plex_port }}:32400"
+      - "{{ plex_dlna_port }}:1900/udp"
+      - "{{ plex_bonjour_port }}:5353/udp"
+      - "{{ plex_roku_port }}:8324"
+      - "{{ plex_gdm_port1 }}:32410/udp"
+      - "{{ plex_gdm_port2 }}:32412/udp"
+      - "{{ plex_gdm_port3 }}:32413/udp"
+      - "{{ plex_gdm_port4 }}:32414/udp"
+      - "{{ plex_dlna_server_port }}:32469"
     volumes:
       - "{{ plex_folder }}:/config:rw"
       - "{{ plex_tv_folder }}:/tv:rw"
@@ -34,6 +42,7 @@
       TZ: "{{ plex_tz }}"
       PUID: "{{ plex_pid }}"
       PGID: "{{ plex_gid }}"
+      PLEX_CLAIM: "{{ plex_claim }}"
     restart_policy: unless-stopped
     memory: "1g"
   when: (not plex_dvb_devices) and (not plex_dri_devices)
@@ -47,6 +56,14 @@
     pull: true
     ports:
       - "{{ plex_port }}:32400"
+      - "{{ plex_dlna_port }}:1900/udp"
+      - "{{ plex_bonjour_port }}:5353/udp"
+      - "{{ plex_roku_port }}:8324"
+      - "{{ plex_gdm_port1 }}:32410/udp"
+      - "{{ plex_gdm_port2 }}:32412/udp"
+      - "{{ plex_gdm_port3 }}:32413/udp"
+      - "{{ plex_gdm_port4 }}:32414/udp"
+      - "{{ plex_dlna_server_port }}:32469"
     volumes:
       - "{{ plex_folder }}:/config:rw"
       - "{{ plex_tv_folder }}:/tv:rw"
@@ -57,6 +74,7 @@
       TZ: "{{ plex_tz }}"
       PUID: "{{ plex_pid }}"
       PGID: "{{ plex_gid }}"
+      PLEX_CLAIM: "{{ plex_claim }}"
     restart_policy: unless-stopped
     memory: "1g"
   when: plex_dvb_devices and (not plex_dri_devices)
@@ -70,6 +88,14 @@
     pull: true
     ports:
       - "{{ plex_port }}:32400"
+      - "{{ plex_dlna_port }}:1900/udp"
+      - "{{ plex_bonjour_port }}:5353/udp"
+      - "{{ plex_roku_port }}:8324"
+      - "{{ plex_gdm_port1 }}:32410/udp"
+      - "{{ plex_gdm_port2 }}:32412/udp"
+      - "{{ plex_gdm_port3 }}:32413/udp"
+      - "{{ plex_gdm_port4 }}:32414/udp"
+      - "{{ plex_dlna_server_port }}:32469"
     volumes:
       - "{{ plex_folder }}:/config:rw"
       - "{{ plex_tv_folder }}:/tv:rw"
@@ -80,6 +106,7 @@
       TZ: "{{ plex_tz }}"
       PUID: "{{ plex_pid }}"
       PGID: "{{ plex_gid }}"
+      PLEX_CLAIM: "{{ plex_claim }}"
     restart_policy: unless-stopped
     memory: "1g"
   when: (not plex_dvb_devices) and plex_dri_devices
@@ -93,6 +120,14 @@
     pull: true
     ports:
       - "{{ plex_port }}:32400"
+      - "{{ plex_dlna_port }}:1900/udp"
+      - "{{ plex_bonjour_port }}:5353/udp"
+      - "{{ plex_roku_port }}:8324"
+      - "{{ plex_gdm_port1 }}:32410/udp"
+      - "{{ plex_gdm_port2 }}:32412/udp"
+      - "{{ plex_gdm_port3 }}:32413/udp"
+      - "{{ plex_gdm_port4 }}:32414/udp"
+      - "{{ plex_dlna_server_port }}:32469"
     volumes:
       - "{{ plex_folder }}:/config:rw"
       - "{{ plex_tv_folder }}:/tv:rw"
@@ -104,6 +139,7 @@
       TZ: "{{ plex_tz }}"
       PUID: "{{ plex_pid }}"
       PGID: "{{ plex_gid }}"
+      PLEX_CLAIM: "{{ plex_claim }}"
     restart_policy: unless-stopped
     memory: "1g"
   when: plex_dvb_devices and plex_dri_devices
