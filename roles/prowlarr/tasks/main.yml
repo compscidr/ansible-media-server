@@ -25,7 +25,7 @@
     pull: true
     ports:
       - "{{ prowlarr_port }}:9696"
-     volumes:
+    volumes:
       - "{{ prowlarr_folder }}:/config:rw"
     env:
       TZ: "{{ prowlarr_tz }}"
