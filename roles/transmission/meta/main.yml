@@ -18,6 +18,7 @@ galaxy_info:
     - runner
     - docker
     - hosted
+    - transmision
 dependencies:
   - src: nickjj.docker
     version: "v2.4.0"
