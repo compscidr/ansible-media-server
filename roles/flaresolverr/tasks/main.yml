@@ -11,6 +11,7 @@
   tags: flaresolverr
   become: true
   community.docker.docker_container:
+    name: flaresolverr
     image: ghcr.io/flaresolverr/flaresolverr:latest
     pull: true
     ports:
