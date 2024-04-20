@@ -8,7 +8,7 @@
   when: install_docker
 
 - name: Create Transmission Directories
-  tags: transmision
+  tags: transmission
   become: true
   ansible.builtin.file:
     path: "{{ transmission_folder }}"
@@ -17,8 +17,8 @@
     owner: root
     group: root
 
-- name: Deploy transmision
-  tags: transmision
+- name: Deploy transmission
+  tags: transmission
   become: true
   community.docker.docker_container:
     name: transmission
