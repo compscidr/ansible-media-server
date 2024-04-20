@@ -1,6 +1,6 @@
 install_docker: false
 prowlarr_port: 9696
 prowlarr_folder: /etc/prowlarr
-prowlarr_tz: America/Los_Angeles
-prowlarr_pid: 1000
-prowlarr_gid: 1000
+prowlarr_tz: "America/Los_Angeles"
+prowlarr_pid: "1000"
+prowlarr_gid: "1000"

@@ -3,6 +3,6 @@ plex_port: 32400
 plex_folder: /etc/plex
 plex_tv_folder: /storage/tv
 plex_movies_folder: /storage/movies
-plex_tz: America/Los_Angeles
-plex_pid: 1000
-plex_gid: 1000
+plex_tz: "America/Los_Angeles"
+plex_pid: "1000"
+plex_gid: "1000"
