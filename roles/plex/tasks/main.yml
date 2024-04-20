@@ -24,6 +24,7 @@
     name: plex
     image: lscr.io/linuxserver/plex:latest
     pull: true
+    network_mode: host
     ports:
       - "{{ plex_port }}:32400"
       - "{{ plex_dlna_port }}:1900/udp"
@@ -54,6 +55,7 @@
     name: plex
     image: lscr.io/linuxserver/plex:latest
     pull: true
+    network_mode: host
     ports:
       - "{{ plex_port }}:32400"
       - "{{ plex_dlna_port }}:1900/udp"
@@ -86,6 +88,7 @@
     name: plex
     image: lscr.io/linuxserver/plex:latest
     pull: true
+    network_mode: host
     ports:
       - "{{ plex_port }}:32400"
       - "{{ plex_dlna_port }}:1900/udp"
@@ -118,6 +121,7 @@
     name: plex
     image: lscr.io/linuxserver/plex:latest
     pull: true
+    network_mode: host
     ports:
       - "{{ plex_port }}:32400"
       - "{{ plex_dlna_port }}:1900/udp"
