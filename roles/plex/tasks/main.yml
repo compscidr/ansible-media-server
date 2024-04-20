@@ -29,7 +29,7 @@
     volumes:
       - "{{ plex_folder }}:/config:rw"
       - "{{ plex_tv_folder }}:/tv:rw"
-      - "{{ plex_movies_folder }}:/tv:rw"
+      - "{{ plex_movies_folder }}:/movies:rw"
     devices:
       - /dev/dri:/dev/dri
       - /dev/dvb:/dev/dvb
