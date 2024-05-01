@@ -28,7 +28,7 @@
       - "{{ sonarr_port }}:8989"
     volumes:
       - "{{ sonarr_tv_folder }}:/tv:rw"
-      - "{{ sonarr_downloads_folder }}:/data:rw"
+      - "{{ sonarr_downloads_folder }}:/data:downloads"
       - "{{ sonarr_folder }}:/config:rw"
     env:
       TZ: "{{ sonarr_tz }}"
