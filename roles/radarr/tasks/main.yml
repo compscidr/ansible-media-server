@@ -28,7 +28,7 @@
       - "{{ radarr_port }}:7878"
     volumes:
       - "{{ radarr_movies_folder }}:/movies:rw"
-      - "{{ radarr_downloads_folder }}:/downloads:rw"
+      - "{{ radarr_downloads_folder }}:/config/downloads:rw"
       - "{{ radarr_downloads_folder }}:/data:rw"
       - "{{ radarr_folder }}:/config:rw"
     env:
