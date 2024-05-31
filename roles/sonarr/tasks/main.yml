@@ -28,8 +28,9 @@
       - "{{ sonarr_port }}:8989"
     volumes:
       - "{{ sonarr_tv_folder }}:/tv:rw"
-      - "{{ sonarr_downloads_folder }}:/config/Downloads:rw"
-      - "{{ sonarr_downloads_folder }}:/data:rw"
+      - "{{ sonarr_tranmissions_downloads_folder }}:/config/Downloads:rw"
+      - "{{ sonarr_tranmissions_downloads_folder }}:/data:rw"
+      - "{{ sonarr_sabnzbd_downoads_folder }}:/configs/Downloads/complete:rw"
       - "{{ sonarr_folder }}:/config:rw"
     env:
       TZ: "{{ sonarr_tz }}"

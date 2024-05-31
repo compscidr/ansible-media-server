@@ -28,8 +28,9 @@
       - "{{ radarr_port }}:7878"
     volumes:
       - "{{ radarr_movies_folder }}:/movies:rw"
-      - "{{ radarr_downloads_folder }}:/config/Downloads:rw"
-      - "{{ radarr_downloads_folder }}:/data:rw"
+      - "{{ radarr_transmission_downloads_folder }}:/config/Downloads:rw"
+      - "{{ radarr_transmission_downloads_folder }}:/data:rw"
+      - "{{ radarr_sabnzbd_downoads_folder }}:/config/Downloads/complete:rw"
       - "{{ radarr_folder }}:/config:rw"
     env:
       TZ: "{{ radarr_tz }}"

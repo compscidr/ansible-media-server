@@ -1,7 +1,8 @@
 install_docker: false
 sonarr_folder: /etc/sonarr
 sonarr_tv_folder: /storage/tv
-sonarr_downloads_folder: /storage/downloads
+sonarr_tranmissions_downloads_folder: /storage/downloads
+sonarr_sabnzbd_downoads_folder: /config/Downloads/complete
 sonarr_port: 8989
 sonarr_tz: "America/Los_Angeles"
 sonarr_pid: "1000"
