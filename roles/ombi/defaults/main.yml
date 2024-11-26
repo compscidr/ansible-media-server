@@ -1,4 +1,4 @@
-install_docker: false
+---
 ombi_port: 3579
 ombi_tz: "America/Los_Angeles"
 ombi_folder: /etc/ombi
@@ -8,3 +8,4 @@ ombi_virtual_host: ""
 ombi_virtual_port: "{{ ombi_port }}"
 ombi_letsencrypt_host: "{{ ombi_virtual_host }}"
 ombi_letsencrypt_email: ""
+ombi_memory: "1g"

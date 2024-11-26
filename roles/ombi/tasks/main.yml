@@ -1,26 +1,18 @@
 ---
-- name: Ensure docker is installed on the target system
-  tags: docker
-  ansible.builtin.include_role:
-    name: nickjj.docker
-    apply:
-      become: true # without this, it will end up failing and retrying over and over to install deps
-  when: install_docker
-  
 - name: Create Ombi Directories
   tags: ombi
   become: true
   ansible.builtin.file:
-    mode: '755'
+    mode: "755"
     path: "{{ ombi_folder }}"
     state: directory
-  
+
 - name: Deploy ombi
   tags: ombi
   become: true
   community.docker.docker_container:
     name: ombi
-    image: 
+    image: lscr.io/linuxserver/ombi:latest
     pull: true
     ports:
       - "{{ ombi_port }}:3579"
@@ -35,4 +27,4 @@
       LETSENCRYPT_HOST: "{{ ombi_letsencrypt_host }}"
       LETSENCRYPT_EMAIL: "{{ ombi_letsencrypt_email }}"
     restart_policy: unless-stopped
-    memory: "1g"
+    memory: "{{ ombi_memory }}"

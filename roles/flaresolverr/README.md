@@ -28,7 +28,7 @@ Use in a playbook:
 # Variables
 Variable                                | Description
 --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-install_docker                          | Set to true to install docker with the nickjj.docker role (defaults to false)
+role (defaults to false)
 flare_port                              | The port flaresolverr will listen on
 flare_captcha_solver                    | The captcha solver used for flaresolverr
 flare_tz                                | The timezone to use for flaresolverr

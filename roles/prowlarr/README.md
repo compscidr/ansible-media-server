@@ -28,7 +28,6 @@ Use in a playbook:
 # Variables
 Variable                                | Description
 --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-install_docker                          | Set to true to install docker with the nickjj.docker role (defaults to false)
 prowlarr_port                           | The port prowlarr will listen on
 prowlarr_folder                         | prowlarr config folder
 prowlarr_tz                             | prowlarr timzeone

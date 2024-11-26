@@ -28,7 +28,6 @@ Use in a playbook:
 # Variables
 Variable                                | Description
 --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-install_docker                          | Set to true to install docker with the nickjj.docker role (defaults to false)
 jackett_folder                          | The config folder for jacket
 jackett_download_folder                 | The downloads folder for jackett
 jackett_port                            | The port jackett will listen on

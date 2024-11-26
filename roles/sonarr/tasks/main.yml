@@ -13,7 +13,7 @@
   ansible.builtin.file:
     path: "{{ sonarr_folder }}"
     state: directory
-    mode: '755'
+    mode: "755"
     owner: root
     group: root
 

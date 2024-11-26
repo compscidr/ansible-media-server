@@ -1,7 +1,8 @@
-install_docker: false
+---
 jackett_folder: /etc/jackett
 jackett_download_folder: /storage/downloads
 jackett_port: 9117
 jackett_tz: "America/Los_Angeles"
 jackett_pid: "1000"
 jackett_gid: "1000"
+jackett_memory: "1g"

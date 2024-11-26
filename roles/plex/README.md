@@ -28,7 +28,6 @@ Use in a playbook:
 # Variables
 Variable                                | Description
 --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-install_docker                          | Set to true to install docker with the nickjj.docker role (defaults to false)
 plex_port                               | The port plex will listen on
 plex_dlna_port                          | The port plex will listen on for DNLA requests (udp)
 plex_bonjour_port                       | The port plex will listen on for bounjour/avahi protocol

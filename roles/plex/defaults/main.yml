@@ -1,4 +1,4 @@
-install_docker: false
+---
 plex_port: 32400
 plex_dlna_port: 1900
 plex_bonjour_port: 5353
@@ -17,3 +17,4 @@ plex_gid: "1000"
 plex_dvb_devices: false
 plex_dri_devices: false
 plex_claim: ""
+plex_memory: "1g"

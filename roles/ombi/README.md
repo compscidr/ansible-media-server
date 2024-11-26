@@ -28,7 +28,6 @@ Use in a playbook:
 # Variables
 Variable                                | Description
 --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-install_docker                          | Set to true to install docker with the nickjj.docker role (defaults to false)
 ombi_port                               | The port ombi will listen on
 ombi_tz                                 | The timezone to use for ombi
 ombi_folder                             | The config folder for ombi

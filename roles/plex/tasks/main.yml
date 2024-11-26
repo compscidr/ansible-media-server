@@ -1,19 +1,11 @@
 ---
-- name: Ensure docker is installed on the target system
-  tags: docker
-  ansible.builtin.include_role:
-    name: nickjj.docker
-    apply:
-      become: true # without this, it will end up failing and retrying over and over to install deps
-  when: install_docker
-  
 - name: Create Plex Directories
   tags: plex
   become: true
   ansible.builtin.file:
     path: "{{ plex_folder }}"
     state: directory
-    mode: '755'
+    mode: "755"
     owner: root
     group: root
 
@@ -45,7 +37,7 @@
       PGID: "{{ plex_gid }}"
       PLEX_CLAIM: "{{ plex_claim }}"
     restart_policy: unless-stopped
-    memory: "1g"
+    memory: "{{ plex_memory }}"
   when: (not plex_dvb_devices) and (not plex_dri_devices)
 
 - name: Deploy plex with dvb devices
@@ -78,7 +70,7 @@
       PGID: "{{ plex_gid }}"
       PLEX_CLAIM: "{{ plex_claim }}"
     restart_policy: unless-stopped
-    memory: "1g"
+    memory: "{{ plex_memory }}"
   when: plex_dvb_devices and (not plex_dri_devices)
 
 - name: Deploy plex with dri devices
@@ -111,7 +103,7 @@
       PGID: "{{ plex_gid }}"
       PLEX_CLAIM: "{{ plex_claim }}"
     restart_policy: unless-stopped
-    memory: "1g"
+    memory: "{{ plex_memory }}"
   when: (not plex_dvb_devices) and plex_dri_devices
 
 - name: Deploy plex with dri and dvb devices
@@ -145,5 +137,5 @@
       PGID: "{{ plex_gid }}"
       PLEX_CLAIM: "{{ plex_claim }}"
     restart_policy: unless-stopped
-    memory: "1g"
+    memory: "{{ plex_memory }}"
   when: plex_dvb_devices and plex_dri_devices

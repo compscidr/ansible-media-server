@@ -1,4 +1,4 @@
-install_docker: false
+---
 transmission_port: 9091
 transmission_folder: /etc/transmission
 transmission_downloads_folder: /storage/downloads

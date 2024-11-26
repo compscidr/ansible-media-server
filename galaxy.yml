@@ -2,21 +2,22 @@
 namespace: compscidr
 name: media_server
 authors:
-    - Jason Ernst <ernstjason1@gmail.com>
+  - Jason Ernst <ernstjason1@gmail.com>
 description: A collection of roles for running a media server in docker containers - sonarr, radarr, plex, ombi, transmission, etc
 license_file: LICENSE
 readme: README.md
 version: 0.0.27
 repository: https://github.com/compscidr/ansible-media-server
 tags:
-    - docker
-    - sonarr
-    - radarr
-    - plex
-    - ombi
-    - transmission
-    - flaresolverr
-    - jackett
-    - prowlarr
+  - docker
+  - sonarr
+  - radarr
+  - plex
+  - ombi
+  - transmission
+  - flaresolverr
+  - jackett
+  - prowlarr
+  - infrastructure
 dependencies:
-    community.docker: "*"
+  community.docker: "*"

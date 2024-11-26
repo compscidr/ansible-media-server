@@ -1,4 +1,4 @@
-install_docker: false
+---
 sonarr_folder: /etc/sonarr
 sonarr_tv_folder: /storage/tv
 sonarr_tranmissions_downloads_folder: /storage/downloads

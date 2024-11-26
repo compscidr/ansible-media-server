@@ -13,10 +13,10 @@
   ansible.builtin.file:
     path: "{{ radarr_folder }}"
     state: directory
-    mode: '755'
+    mode: "755"
     owner: root
     group: root
-    
+
 - name: Deploy radarr
   tags: radarr
   become: true
@@ -37,4 +37,4 @@
       PUID: "{{ radarr_pid }}"
       PGID: "{{ radarr_gid }}"
     restart_policy: unless-stopped
-    memory: 1g
+    memory: "{{ radarr_memory }}"

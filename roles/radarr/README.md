@@ -28,7 +28,6 @@ Use in a playbook:
 # Variables
 Variable                                | Description
 --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-install_docker                          | Set to true to install docker with the nickjj.docker role (defaults to false)
 radarr_folder                           | radarr config folder
 radarr_movies_folder                    | where the completed moves should be moved to
 radarr_transmission_downloads_folder    | transmission download folder

@@ -1,4 +1,5 @@
-install_docker: false
-flare_port: 8192
-flare_captcha_solver: hcaptcha-solver
-flare_tz: "America/Los_Angeles"
+---
+flaresolverr_port: 8192
+flaresolverr_captcha_solver: hcaptcha-solver
+flaresolverr_tz: "America/Los_Angeles"
+flaresolverr_memory: "1g"
