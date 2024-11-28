@@ -1,4 +1,8 @@
 # ansible-media-server
+[![Static Badge](https://img.shields.io/badge/Ansible_galaxy-Download-blue)](https://galaxy.ansible.com/ui/repo/published/compscidr/media_server/)
+[![ansible lint](https://github.com/compscidr/ansible-media-server/actions/workflows/check.yml/badge.svg)](https://github.com/compscidr/ansible-media-server/actions/workflows/check.yml)
+[![ansible lint rules](https://img.shields.io/badge/Ansible--lint-rules%20table-blue.svg)](https://ansible.readthedocs.io/projects/lint/rules/)
+
 A collection of roles for running a media server with docker containers:
 - flaresolverr
 - jackett
