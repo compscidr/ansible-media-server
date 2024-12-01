@@ -28,7 +28,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install and run molecule
-        run:
+        run: |
           python3 -m venv venv 
           . venv/bin/activate
           pip3 install -r requirements.txt
