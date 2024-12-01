@@ -7,9 +7,9 @@
     image: ghcr.io/flaresolverr/flaresolverr:latest
     pull: true
     ports:
-      - "{{ flare_port }}:8191"
+      - "{{ flaresolverr_port }}:8191"
     env:
-      CAPTCHA_SOLVER: "{{ flare_captcha_solver }}"
-      TZ: "{{ flare_tz }}"
+      CAPTCHA_SOLVER: "{{ flaresolverr_captcha_solver }}"
+      TZ: "{{ flaresolverr_tz }}"
     restart_policy: unless-stopped
-    memory: "{{ flare_memory }}"
+    memory: "{{ flaresolverr_memory }}"
