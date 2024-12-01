@@ -1,0 +1,8 @@
+---
+- name: Include a role from a collection
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Test flaresolverr
+      ansible.builtin.include_role:
+        name: compscidr.mediaserver.flaresolverr
