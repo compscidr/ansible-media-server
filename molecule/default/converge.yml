@@ -1,8 +1,14 @@
 ---
-- name: Include a role from a collection
-  hosts: localhost
-  gather_facts: false
-  tasks:
-    - name: Test flaresolverr
-      ansible.builtin.include_role:
-        name: compscidr.mediaserver.flaresolverr
+# - name: Prereqs
+#   hosts: all
+#   become: true
+#   tasks:
+#     - name: Install prereqs
+#       ansible.builtin.apt:
+#         update_cache: true
+#         pkg:
+#           - docker.io
+#           - sudo
+
+- name: Test the playbook
+  ansible.builtin.import_playbook: ../../playbook.yml

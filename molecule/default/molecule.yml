@@ -8,13 +8,6 @@ driver:
   name: docker
 platforms:
   - name: instance
-    groups:
-      - dev
-      - dev_gui
-      - gui
-      - android_runner
-      - nas
-      - academic_gui
     image: "geerlingguy/docker-ubuntu2404-ansible:latest"
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
@@ -23,5 +16,3 @@ platforms:
     pre_build_image: true
 provisioner:
   name: ansible
-  playbooks:
-    converge: ${MOLECULE_PLAYBOOK:-converge.yml}

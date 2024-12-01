@@ -1,6 +1,7 @@
 ---
 - name: Media Server
   hosts: localhost
+  become: true
   roles:
     - role: compscidr.media_server.flaresolverr
     - role: compscidr.media_server.jackett
