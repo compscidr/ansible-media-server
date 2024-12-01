@@ -2,7 +2,7 @@ name: ansible-lint
 on: [push, pull_request]
 
 jobs:
-  build:
+  lint:
     name: Ansible Lint # Naming the build is important to use it as a status check
     runs-on: ubuntu-latest
     steps:
@@ -15,3 +15,16 @@ jobs:
           setup_python: "true"
           working_directory: ""
           requirements_file: ""
+        # https://github.com/geerlingguy/ansible-role-redis/blob/master/.github/workflows/ci.yml
+
+  deploy-test:
+    runs-on: ubuntu-24.04
+    name: Molecule Test
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install and run molecule
+        run:
+          python3 -m venv venv 
+          . venv/bin/activate
+          pip3 -r requirementst.txt
+          molecule test
