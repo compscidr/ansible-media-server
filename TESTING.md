@@ -36,13 +36,25 @@ pip install -r requirements.txt
 
 ## Running Tests
 
-### Test all roles
+### Test all roles (Local Development)
 
 All roles are tested together using the centralized molecule configuration:
 
 ```bash
 # Make sure you're in the project root directory
 molecule test
+```
+
+### Test a specific role
+
+You can test a single role by setting the TEST_ROLE environment variable:
+
+```bash
+# Test only the plex role
+TEST_ROLE=plex molecule test
+
+# Test only the radarr role  
+TEST_ROLE=radarr molecule test
 ```
 
 ### Test specific scenarios
@@ -57,6 +69,19 @@ molecule verify
 # Clean up test environment
 molecule destroy
 ```
+
+### Available roles for testing
+
+- `plex` - Plex media server
+- `ombi` - Request management  
+- `radarr` - Movie management
+- `sonarr` - TV show management
+- `lidarr` - Music management
+- `prowlarr` - Indexer management
+- `jackett` - Torrent indexer proxy
+- `sabnzbd` - Usenet downloader
+- `flaresolverr` - Cloudflare solver
+- `transmission` - BitTorrent client
 
 ## Test Structure
 
@@ -80,8 +105,8 @@ The project uses a centralized molecule configuration:
 ## GitHub Actions
 
 The project includes automated testing via GitHub Actions that runs:
-- ansible-lint for all YAML files
-- molecule tests for roles with molecule configurations
+- **ansible-lint** for all YAML files
+- **molecule tests** using a matrix strategy - each role is tested individually in parallel jobs to ensure proper resource isolation and comprehensive coverage
 
 ## Tested Roles
 

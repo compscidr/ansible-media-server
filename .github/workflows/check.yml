@@ -22,8 +22,21 @@ jobs:
           requirements_file: ""
 
   molecule:
-    name: Molecule Tests
+    name: Molecule Tests - ${{ matrix.role }}
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        role:
+          - plex
+          - ombi
+          - radarr
+          - sonarr
+          - lidarr
+          - prowlarr
+          - jackett
+          - sabnzbd
+          - flaresolverr
+          - transmission
     steps:
       - uses: actions/checkout@v5
       
@@ -37,5 +50,18 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
       
-      - name: Run molecule tests
+      - name: Create roles symlink for molecule
+        run: |
+          ln -sf ../../roles molecule/default/roles
+      
+      - name: Start Docker daemon
+        run: |
+          sudo systemctl start docker
+          sudo chmod 666 /var/run/docker.sock
+      
+      - name: Run molecule tests for ${{ matrix.role }}
         run: molecule test
+        env:
+          MOLECULE_NO_LOG: false
+          CI: true
+          TEST_ROLE: ${{ matrix.role }}

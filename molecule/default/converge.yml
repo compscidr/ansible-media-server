@@ -3,42 +3,55 @@
   hosts: all
   become: true
   tasks:
+    # If TEST_ROLE is defined (CI matrix), run only that role
+    # If TEST_ROLE is not defined (local testing), run all roles
+    
     - name: "Include plex role"
       ansible.builtin.include_role:
         name: "plex"
+      when: ansible_env.TEST_ROLE is undefined or ansible_env.TEST_ROLE == "plex"
 
     - name: "Include ombi role"
       ansible.builtin.include_role:
         name: "ombi"
+      when: ansible_env.TEST_ROLE is undefined or ansible_env.TEST_ROLE == "ombi"
 
     - name: "Include radarr role"
       ansible.builtin.include_role:
         name: "radarr"
+      when: ansible_env.TEST_ROLE is undefined or ansible_env.TEST_ROLE == "radarr"
 
     - name: "Include sonarr role"
       ansible.builtin.include_role:
         name: "sonarr"
+      when: ansible_env.TEST_ROLE is undefined or ansible_env.TEST_ROLE == "sonarr"
 
     - name: "Include lidarr role"
       ansible.builtin.include_role:
         name: "lidarr"
+      when: ansible_env.TEST_ROLE is undefined or ansible_env.TEST_ROLE == "lidarr"
 
     - name: "Include prowlarr role"
       ansible.builtin.include_role:
         name: "prowlarr"
+      when: ansible_env.TEST_ROLE is undefined or ansible_env.TEST_ROLE == "prowlarr"
 
     - name: "Include jackett role"
       ansible.builtin.include_role:
         name: "jackett"
+      when: ansible_env.TEST_ROLE is undefined or ansible_env.TEST_ROLE == "jackett"
 
     - name: "Include sabnzbd role"
       ansible.builtin.include_role:
         name: "sabnzbd"
+      when: ansible_env.TEST_ROLE is undefined or ansible_env.TEST_ROLE == "sabnzbd"
 
     - name: "Include flaresolverr role"
       ansible.builtin.include_role:
         name: "flaresolverr"
+      when: ansible_env.TEST_ROLE is undefined or ansible_env.TEST_ROLE == "flaresolverr"
 
     - name: "Include transmission role"
       ansible.builtin.include_role:
         name: "transmission"
+      when: ansible_env.TEST_ROLE is undefined or ansible_env.TEST_ROLE == "transmission"
