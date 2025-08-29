@@ -1,0 +1,29 @@
+---
+- name: Verify
+  hosts: all
+  become: true
+  gather_facts: false
+  tasks:
+    - name: Check if plex config directory exists
+      ansible.builtin.stat:
+        path: /tmp/plex
+      register: plex_dir
+
+    - name: Verify plex directory was created
+      ansible.builtin.assert:
+        that:
+          - plex_dir.stat.exists
+          - plex_dir.stat.isdir
+        fail_msg: "Plex config directory was not created"
+
+    - name: Check if docker container is running
+      community.docker.docker_container_info:
+        name: plex
+      register: container_info
+
+    - name: Verify plex container is running
+      ansible.builtin.assert:
+        that:
+          - container_info.exists
+          - container_info.container.State.Status == "running"
+        fail_msg: "Plex container is not running properly"

@@ -1,0 +1,13 @@
+---
+- name: Prepare
+  hosts: all
+  become: true
+  gather_facts: false
+  tasks:
+    - name: Install Python packages required for Docker module
+      ansible.builtin.package:
+        name:
+          - python3-requests
+          - python3-docker
+        state: present
+        update_cache: yes
