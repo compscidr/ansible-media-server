@@ -1,0 +1,29 @@
+---
+- name: Verify
+  hosts: all
+  become: true
+  tasks:
+    - name: Check if sonarr container is running
+      community.docker.docker_container_info:
+        name: sonarr
+      register: sonarr_info
+
+    - name: Verify sonarr container is running
+      ansible.builtin.assert:
+        that:
+          - sonarr_info.container.State.Status == "running"
+        fail_msg: "sonarr container is not running"
+        success_msg: "sonarr container is running successfully"
+
+    - name: Verify sonarr directory exists
+      ansible.builtin.stat:
+        path: "/tmp/sonarr"
+      register: sonarr_dir
+
+    - name: Assert sonarr directory exists
+      ansible.builtin.assert:
+        that:
+          - sonarr_dir.stat.exists
+          - sonarr_dir.stat.isdir
+        fail_msg: "sonarr directory does not exist"
+        success_msg: "sonarr directory exists"

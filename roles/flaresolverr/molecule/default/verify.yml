@@ -1,0 +1,26 @@
+---
+- name: Verify
+  hosts: all
+  become: true
+  tasks:
+    - name: Check if flaresolverr container is running
+      community.docker.docker_container_info:
+        name: flaresolverr
+      register: flaresolverr_info
+
+    - name: Verify flaresolverr container is running
+      ansible.builtin.assert:
+        that:
+          - flaresolverr_info.container.State.Status == "running"
+        fail_msg: "flaresolverr container is not running"
+        success_msg: "flaresolverr container is running successfully"
+
+    - name: Verify flaresolverr is healthy
+      ansible.builtin.uri:
+        url: "http://localhost:{{ flaresolverr_port | default(8192) }}"
+        method: GET
+        timeout: 30
+      register: flaresolverr_health
+      retries: 5
+      delay: 10
+      until: flaresolverr_health.status == 200

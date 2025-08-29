@@ -1,0 +1,29 @@
+---
+- name: Verify
+  hosts: all
+  become: true
+  tasks:
+    - name: Check if jackett container is running
+      community.docker.docker_container_info:
+        name: jackett
+      register: jackett_info
+
+    - name: Verify jackett container is running
+      ansible.builtin.assert:
+        that:
+          - jackett_info.container.State.Status == "running"
+        fail_msg: "jackett container is not running"
+        success_msg: "jackett container is running successfully"
+
+    - name: Verify jackett directory exists
+      ansible.builtin.stat:
+        path: "/tmp/jackett"
+      register: jackett_dir
+
+    - name: Assert jackett directory exists
+      ansible.builtin.assert:
+        that:
+          - jackett_dir.stat.exists
+          - jackett_dir.stat.isdir
+        fail_msg: "jackett directory does not exist"
+        success_msg: "jackett directory exists"

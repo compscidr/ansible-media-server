@@ -1,0 +1,29 @@
+---
+- name: Verify
+  hosts: all
+  become: true
+  tasks:
+    - name: Check if transmission container is running
+      community.docker.docker_container_info:
+        name: transmission
+      register: transmission_info
+
+    - name: Verify transmission container is running
+      ansible.builtin.assert:
+        that:
+          - transmission_info.container.State.Status == "running"
+        fail_msg: "transmission container is not running"
+        success_msg: "transmission container is running successfully"
+
+    - name: Verify transmission directory exists
+      ansible.builtin.stat:
+        path: "/tmp/transmission"
+      register: transmission_dir
+
+    - name: Assert transmission directory exists
+      ansible.builtin.assert:
+        that:
+          - transmission_dir.stat.exists
+          - transmission_dir.stat.isdir
+        fail_msg: "transmission directory does not exist"
+        success_msg: "transmission directory exists"

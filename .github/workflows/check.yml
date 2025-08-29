@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        role: [plex]
+        role: [flaresolverr, jackett, lidarr, ombi, plex, prowlarr, radarr, sabnzbd, sonarr, transmission]
     steps:
       - uses: actions/checkout@v5
 

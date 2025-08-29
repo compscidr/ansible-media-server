@@ -1,0 +1,29 @@
+---
+- name: Verify
+  hosts: all
+  become: true
+  tasks:
+    - name: Check if ombi container is running
+      community.docker.docker_container_info:
+        name: ombi
+      register: ombi_info
+
+    - name: Verify ombi container is running
+      ansible.builtin.assert:
+        that:
+          - ombi_info.container.State.Status == "running"
+        fail_msg: "ombi container is not running"
+        success_msg: "ombi container is running successfully"
+
+    - name: Verify ombi directory exists
+      ansible.builtin.stat:
+        path: "/tmp/ombi"
+      register: ombi_dir
+
+    - name: Assert ombi directory exists
+      ansible.builtin.assert:
+        that:
+          - ombi_dir.stat.exists
+          - ombi_dir.stat.isdir
+        fail_msg: "ombi directory does not exist"
+        success_msg: "ombi directory exists"

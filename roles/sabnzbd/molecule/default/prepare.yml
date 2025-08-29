@@ -1,0 +1,11 @@
+---
+- name: Prepare
+  hosts: all
+  become: true
+  tasks:
+    - name: Install Docker Python library
+      ansible.builtin.pip:
+        name:
+          - requests
+          - docker
+        state: present
