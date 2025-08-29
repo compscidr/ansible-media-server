@@ -18,6 +18,7 @@ tags:
   - flaresolverr
   - jackett
   - prowlarr
+  - lidarr
   - infrastructure
 dependencies:
   community.docker: "*"
