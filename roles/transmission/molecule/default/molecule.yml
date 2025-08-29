@@ -27,5 +27,7 @@ provisioner:
       instance:
         # Override defaults for testing - use /tmp for test directories
         transmission_folder: "/tmp/transmission"
+        transmission_downloads_folder: "/tmp/transmission/downloads"
+        transmission_env_file: "/tmp/transmission/.env"
 verifier:
   name: ansible

@@ -9,3 +9,15 @@
           - requests
           - docker
         state: present
+
+    - name: Create transmission downloads directory
+      ansible.builtin.file:
+        path: "/tmp/transmission/downloads"
+        state: directory
+        mode: "755"
+
+    - name: Create dummy env file for transmission testing
+      ansible.builtin.file:
+        path: "/tmp/transmission/.env"
+        state: touch
+        mode: "644"

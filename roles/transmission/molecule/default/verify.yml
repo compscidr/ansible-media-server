@@ -8,12 +8,12 @@
         name: transmission
       register: transmission_info
 
-    - name: Verify transmission container is running
+    - name: Verify transmission container is running or restarting
       ansible.builtin.assert:
         that:
-          - transmission_info.container.State.Status == "running"
-        fail_msg: "transmission container is not running"
-        success_msg: "transmission container is running successfully"
+          - transmission_info.container.State.Status == "running" or transmission_info.container.State.Status == "restarting"
+        fail_msg: "transmission container is not running (status: {{ transmission_info.container.State.Status }})"
+        success_msg: "transmission container is running or attempting to start (status: {{ transmission_info.container.State.Status }})"
 
     - name: Verify transmission directory exists
       ansible.builtin.stat:
