@@ -6,3 +6,39 @@
     - name: "Include plex role"
       ansible.builtin.include_role:
         name: "plex"
+
+    - name: "Include ombi role"
+      ansible.builtin.include_role:
+        name: "ombi"
+
+    - name: "Include radarr role"
+      ansible.builtin.include_role:
+        name: "radarr"
+
+    - name: "Include sonarr role"
+      ansible.builtin.include_role:
+        name: "sonarr"
+
+    - name: "Include lidarr role"
+      ansible.builtin.include_role:
+        name: "lidarr"
+
+    - name: "Include prowlarr role"
+      ansible.builtin.include_role:
+        name: "prowlarr"
+
+    - name: "Include jackett role"
+      ansible.builtin.include_role:
+        name: "jackett"
+
+    - name: "Include sabnzbd role"
+      ansible.builtin.include_role:
+        name: "sabnzbd"
+
+    - name: "Include flaresolverr role"
+      ansible.builtin.include_role:
+        name: "flaresolverr"
+
+    - name: "Include transmission role"
+      ansible.builtin.include_role:
+        name: "transmission"
