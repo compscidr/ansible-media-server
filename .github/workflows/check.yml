@@ -2,6 +2,10 @@ name: ansible-lint
 on:
   pull_request:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     name: Ansible Lint # Naming the build is important to use it as a status check
