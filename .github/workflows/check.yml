@@ -1,4 +1,6 @@
-name: ansible-lint
+---
+name: CI
+# yamllint disable-line rule:truthy
 on:
   push:
     branches: [main]
@@ -14,7 +16,7 @@ jobs:
         uses: ansible/ansible-lint@main
         with:
           args: ""
-          setup_python: "true"
+          setup_python: true
           working_directory: ""
           requirements_file: ""
 
@@ -23,7 +25,17 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        role: [flaresolverr, jackett, lidarr, ombi, plex, prowlarr, radarr, sabnzbd, sonarr, transmission]
+        role:
+          - flaresolverr
+          - jackett
+          - lidarr
+          - ombi
+          - plex
+          - prowlarr
+          - radarr
+          - sabnzbd
+          - sonarr
+          - transmission
     steps:
       - uses: actions/checkout@v5
 
