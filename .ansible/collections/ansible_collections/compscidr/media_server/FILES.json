@@ -29,13 +29,6 @@
    "format": 1
   },
   {
-   "name": ".ansible/collections/ansible_collections/compscidr",
-   "ftype": "dir",
-   "chksum_type": null,
-   "chksum_sha256": null,
-   "format": 1
-  },
-  {
    "name": ".ansible/collections/ansible_collections/community.library_inventory_filtering_v1-1.1.1.info",
    "ftype": "dir",
    "chksum_type": null,
@@ -7158,7 +7151,7 @@
    "name": ".gitignore",
    "ftype": "file",
    "chksum_type": "sha256",
-   "chksum_sha256": "5c8b1f49b5e75f805c00116e9d68100d11a2d000cceb20526229cb9284647192",
+   "chksum_sha256": "bd72d9fa112f81dd8f19ff42cf2fc585bde1330f6aebfa3b94ff63ec83794d51",
    "format": 1
   },
   {
