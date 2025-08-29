@@ -19,13 +19,23 @@ platforms:
       - SYS_ADMIN
 provisioner:
   name: ansible
-  config_options:
-    defaults:
-      roles_path: /home/runner/work/ansible-media-server/ansible-media-server/roles
   inventory:
     host_vars:
       instance:
         # Override defaults for testing - use /tmp for test directories
+        plex_folder: "/tmp/plex"
+        plex_tv_folder: "/tmp/tv"
+        plex_movies_folder: "/tmp/movies"
+        plex_music_folder: "/tmp/music"
+        ombi_folder: "/tmp/ombi"
+        radarr_folder: "/tmp/radarr"
+        sonarr_folder: "/tmp/sonarr"
+        lidarr_folder: "/tmp/lidarr"
+        jackett_folder: "/tmp/jackett"
         prowlarr_folder: "/tmp/prowlarr"
+        sabnzbd_folder: "/tmp/sabnzbd"
+        transmission_folder: "/tmp/transmission"
+        # Skip docker installation since we're already running in docker
+        install_docker: false
 verifier:
   name: ansible

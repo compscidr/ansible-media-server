@@ -9,7 +9,26 @@ This project uses [Molecule](https://molecule.readthedocs.io/) for testing Ansib
 
 ## Installation
 
-Install the required dependencies:
+### For Local Development (Recommended)
+
+Create and activate a virtual environment, then install dependencies:
+
+```bash
+# Create a virtual environment
+python3 -m venv venv
+
+# Activate the virtual environment
+source venv/bin/activate  # On Linux/macOS
+# or
+venv\Scripts\activate     # On Windows
+
+# Install the required dependencies
+pip install -r requirements.txt
+```
+
+### Global Installation (Not Recommended)
+
+Alternatively, you can install globally (not recommended for local development):
 
 ```bash
 pip install -r requirements.txt
@@ -17,40 +36,45 @@ pip install -r requirements.txt
 
 ## Running Tests
 
-### Test a specific role
+### Test all roles
+
+All roles are tested together using the centralized molecule configuration:
 
 ```bash
-cd roles/plex
+# Make sure you're in the project root directory
 molecule test
 ```
 
-### Test all roles with molecule configurations
+### Test specific scenarios
 
 ```bash
-# Currently available: plex
-for role in roles/*/molecule; do
-    cd $(dirname $role)
-    echo "Testing $(basename $(dirname $role))..."
-    molecule test
-    cd ../..
-done
+# Run only the converge step (deploy all roles)
+molecule converge
+
+# Run only verification tests
+molecule verify
+
+# Clean up test environment
+molecule destroy
 ```
 
 ## Test Structure
 
-Each role with molecule testing has the following structure:
+The project uses a centralized molecule configuration:
 
 ```
-roles/<role_name>/
+.
 ├── molecule/
 │   └── default/
 │       ├── molecule.yml      # Molecule configuration
-│       ├── converge.yml      # Test playbook
-│       ├── verify.yml        # Verification tests
+│       ├── converge.yml      # Test playbook that includes all roles
+│       ├── verify.yml        # Verification tests for all services
 │       └── prepare.yml       # Environment preparation
-├── tasks/
-├── defaults/
-└── meta/
+└── roles/
+    ├── plex/
+    ├── ombi/
+    ├── radarr/
+    └── ...                   # All roles are tested together
 ```
 
 ## GitHub Actions
@@ -59,6 +83,17 @@ The project includes automated testing via GitHub Actions that runs:
 - ansible-lint for all YAML files
 - molecule tests for roles with molecule configurations
 
-## Available Test Roles
+## Tested Roles
 
-- **plex**: Tests Plex media server deployment and configuration
+The molecule tests verify the deployment and configuration of all media server roles:
+
+- **plex**: Plex media server
+- **ombi**: Request management
+- **radarr**: Movie management
+- **sonarr**: TV show management  
+- **lidarr**: Music management
+- **prowlarr**: Indexer management
+- **jackett**: Torrent indexer proxy
+- **sabnzbd**: Usenet downloader
+- **flaresolverr**: Cloudflare solver
+- **transmission**: BitTorrent client

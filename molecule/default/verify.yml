@@ -1,0 +1,115 @@
+---
+- name: Verify
+  hosts: all
+  become: true
+  tasks:
+    - name: Check if plex container is running
+      community.docker.docker_container_info:
+        name: plex
+      register: plex_info
+
+    - name: Verify plex container is running
+      ansible.builtin.assert:
+        that:
+          - plex_info.exists
+          - plex_info.container.State.Status == "running"
+        fail_msg: "Plex container is not running properly"
+
+    - name: Check if ombi container is running
+      community.docker.docker_container_info:
+        name: ombi
+      register: ombi_info
+
+    - name: Verify ombi container is running
+      ansible.builtin.assert:
+        that:
+          - ombi_info.container.State.Status == "running"
+        fail_msg: "ombi container is not running"
+
+    - name: Check if radarr container is running
+      community.docker.docker_container_info:
+        name: radarr
+      register: radarr_info
+
+    - name: Verify radarr container is running
+      ansible.builtin.assert:
+        that:
+          - radarr_info.container.State.Status == "running"
+        fail_msg: "radarr container is not running"
+
+    - name: Check if sonarr container is running
+      community.docker.docker_container_info:
+        name: sonarr
+      register: sonarr_info
+
+    - name: Verify sonarr container is running
+      ansible.builtin.assert:
+        that:
+          - sonarr_info.container.State.Status == "running"
+        fail_msg: "sonarr container is not running"
+
+    - name: Check if lidarr container is running
+      community.docker.docker_container_info:
+        name: lidarr
+      register: lidarr_info
+
+    - name: Verify lidarr container is running
+      ansible.builtin.assert:
+        that:
+          - lidarr_info.container.State.Status == "running"
+        fail_msg: "lidarr container is not running"
+
+    - name: Check if prowlarr container is running
+      community.docker.docker_container_info:
+        name: prowlarr
+      register: prowlarr_info
+
+    - name: Verify prowlarr container is running
+      ansible.builtin.assert:
+        that:
+          - prowlarr_info.container.State.Status == "running"
+        fail_msg: "prowlarr container is not running"
+
+    - name: Check if jackett container is running
+      community.docker.docker_container_info:
+        name: jackett
+      register: jackett_info
+
+    - name: Verify jackett container is running
+      ansible.builtin.assert:
+        that:
+          - jackett_info.container.State.Status == "running"
+        fail_msg: "jackett container is not running"
+
+    - name: Check if sabnzbd container is running
+      community.docker.docker_container_info:
+        name: sabnzbd
+      register: sabnzbd_info
+
+    - name: Verify sabnzbd container is running
+      ansible.builtin.assert:
+        that:
+          - sabnzbd_info.container.State.Status == "running"
+        fail_msg: "sabnzbd container is not running"
+
+    - name: Check if flaresolverr container is running
+      community.docker.docker_container_info:
+        name: flaresolverr
+      register: flaresolverr_info
+
+    - name: Verify flaresolverr container is running
+      ansible.builtin.assert:
+        that:
+          - flaresolverr_info.container.State.Status == "running"
+        fail_msg: "flaresolverr container is not running"
+
+    - name: Check if transmission container is running
+      community.docker.docker_container_info:
+        name: transmission
+      register: transmission_info
+
+    - name: Verify transmission container is running
+      ansible.builtin.assert:
+        that:
+          - transmission_info.container.State.Status == "running"
+        fail_msg: "transmission container is not running"

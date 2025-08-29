@@ -3,6 +3,6 @@
   hosts: all
   become: true
   tasks:
-    - name: "Include sonarr role"
+    - name: "Include plex role"
       ansible.builtin.include_role:
-        name: "sonarr"
+        name: "plex"
