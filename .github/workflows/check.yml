@@ -64,4 +64,4 @@ jobs:
         env:
           MOLECULE_NO_LOG: false
           CI: true
-          TEST_ROLE: ${{ matrix.role }}
+          ANSIBLE_TEST_ROLE: ${{ matrix.role }}

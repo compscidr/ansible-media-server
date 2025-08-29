@@ -47,14 +47,14 @@ molecule test
 
 ### Test a specific role
 
-You can test a single role by setting the TEST_ROLE environment variable:
+You can test a single role by setting the ANSIBLE_TEST_ROLE environment variable:
 
 ```bash
 # Test only the plex role
-TEST_ROLE=plex molecule test
+ANSIBLE_TEST_ROLE=plex molecule test
 
 # Test only the radarr role  
-TEST_ROLE=radarr molecule test
+ANSIBLE_TEST_ROLE=radarr molecule test
 ```
 
 ### Test specific scenarios

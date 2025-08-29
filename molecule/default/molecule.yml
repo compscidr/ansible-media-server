@@ -37,5 +37,7 @@ provisioner:
         transmission_folder: "/tmp/transmission"
         # Skip docker installation since we're already running in docker
         install_docker: false
+        # Set test role from environment variable
+        test_role: "{{ lookup('env', 'ANSIBLE_TEST_ROLE') }}"
 verifier:
   name: ansible

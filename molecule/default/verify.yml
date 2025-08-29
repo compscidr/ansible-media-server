@@ -3,14 +3,14 @@
   hosts: all
   become: true
   tasks:
-    # If TEST_ROLE is defined (CI matrix), verify only that container
-    # If TEST_ROLE is not defined (local testing), verify all containers
-    
+    # If test_role is defined (CI matrix), verify only that container
+    # If test_role is not defined (local testing), verify all containers
+
     - name: Check if plex container is running
       community.docker.docker_container_info:
         name: plex
       register: plex_info
-      when: ansible_env.TEST_ROLE is undefined or ansible_env.TEST_ROLE == "plex"
+      when: test_role == "" or test_role == "plex"
 
     - name: Verify plex container is running
       ansible.builtin.assert:
@@ -18,121 +18,121 @@
           - plex_info.exists
           - plex_info.container.State.Status == "running"
         fail_msg: "Plex container is not running properly"
-      when: ansible_env.TEST_ROLE is undefined or ansible_env.TEST_ROLE == "plex"
+      when: test_role == "" or test_role == "plex"
 
     - name: Check if ombi container is running
       community.docker.docker_container_info:
         name: ombi
       register: ombi_info
-      when: ansible_env.TEST_ROLE is undefined or ansible_env.TEST_ROLE == "ombi"
+      when: test_role == "" or test_role == "ombi"
 
     - name: Verify ombi container is running
       ansible.builtin.assert:
         that:
           - ombi_info.container.State.Status == "running"
         fail_msg: "ombi container is not running"
-      when: ansible_env.TEST_ROLE is undefined or ansible_env.TEST_ROLE == "ombi"
+      when: test_role == "" or test_role == "ombi"
 
     - name: Check if radarr container is running
       community.docker.docker_container_info:
         name: radarr
       register: radarr_info
-      when: ansible_env.TEST_ROLE is undefined or ansible_env.TEST_ROLE == "radarr"
+      when: test_role == "" or test_role == "radarr"
 
     - name: Verify radarr container is running
       ansible.builtin.assert:
         that:
           - radarr_info.container.State.Status == "running"
         fail_msg: "radarr container is not running"
-      when: ansible_env.TEST_ROLE is undefined or ansible_env.TEST_ROLE == "radarr"
+      when: test_role == "" or test_role == "radarr"
 
     - name: Check if sonarr container is running
       community.docker.docker_container_info:
         name: sonarr
       register: sonarr_info
-      when: ansible_env.TEST_ROLE is undefined or ansible_env.TEST_ROLE == "sonarr"
+      when: test_role == "" or test_role == "sonarr"
 
     - name: Verify sonarr container is running
       ansible.builtin.assert:
         that:
           - sonarr_info.container.State.Status == "running"
         fail_msg: "sonarr container is not running"
-      when: ansible_env.TEST_ROLE is undefined or ansible_env.TEST_ROLE == "sonarr"
+      when: test_role == "" or test_role == "sonarr"
 
     - name: Check if lidarr container is running
       community.docker.docker_container_info:
         name: lidarr
       register: lidarr_info
-      when: ansible_env.TEST_ROLE is undefined or ansible_env.TEST_ROLE == "lidarr"
+      when: test_role == "" or test_role == "lidarr"
 
     - name: Verify lidarr container is running
       ansible.builtin.assert:
         that:
           - lidarr_info.container.State.Status == "running"
         fail_msg: "lidarr container is not running"
-      when: ansible_env.TEST_ROLE is undefined or ansible_env.TEST_ROLE == "lidarr"
+      when: test_role == "" or test_role == "lidarr"
 
     - name: Check if prowlarr container is running
       community.docker.docker_container_info:
         name: prowlarr
       register: prowlarr_info
-      when: ansible_env.TEST_ROLE is undefined or ansible_env.TEST_ROLE == "prowlarr"
+      when: test_role == "" or test_role == "prowlarr"
 
     - name: Verify prowlarr container is running
       ansible.builtin.assert:
         that:
           - prowlarr_info.container.State.Status == "running"
         fail_msg: "prowlarr container is not running"
-      when: ansible_env.TEST_ROLE is undefined or ansible_env.TEST_ROLE == "prowlarr"
+      when: test_role == "" or test_role == "prowlarr"
 
     - name: Check if jackett container is running
       community.docker.docker_container_info:
         name: jackett
       register: jackett_info
-      when: ansible_env.TEST_ROLE is undefined or ansible_env.TEST_ROLE == "jackett"
+      when: test_role == "" or test_role == "jackett"
 
     - name: Verify jackett container is running
       ansible.builtin.assert:
         that:
           - jackett_info.container.State.Status == "running"
         fail_msg: "jackett container is not running"
-      when: ansible_env.TEST_ROLE is undefined or ansible_env.TEST_ROLE == "jackett"
+      when: test_role == "" or test_role == "jackett"
 
     - name: Check if sabnzbd container is running
       community.docker.docker_container_info:
         name: sabnzbd
       register: sabnzbd_info
-      when: ansible_env.TEST_ROLE is undefined or ansible_env.TEST_ROLE == "sabnzbd"
+      when: test_role == "" or test_role == "sabnzbd"
 
     - name: Verify sabnzbd container is running
       ansible.builtin.assert:
         that:
           - sabnzbd_info.container.State.Status == "running"
         fail_msg: "sabnzbd container is not running"
-      when: ansible_env.TEST_ROLE is undefined or ansible_env.TEST_ROLE == "sabnzbd"
+      when: test_role == "" or test_role == "sabnzbd"
 
     - name: Check if flaresolverr container is running
       community.docker.docker_container_info:
         name: flaresolverr
       register: flaresolverr_info
-      when: ansible_env.TEST_ROLE is undefined or ansible_env.TEST_ROLE == "flaresolverr"
+      when: test_role == "" or test_role == "flaresolverr"
 
     - name: Verify flaresolverr container is running
       ansible.builtin.assert:
         that:
           - flaresolverr_info.container.State.Status == "running"
         fail_msg: "flaresolverr container is not running"
-      when: ansible_env.TEST_ROLE is undefined or ansible_env.TEST_ROLE == "flaresolverr"
+      when: test_role == "" or test_role == "flaresolverr"
 
     - name: Check if transmission container is running
       community.docker.docker_container_info:
         name: transmission
       register: transmission_info
-      when: ansible_env.TEST_ROLE is undefined or ansible_env.TEST_ROLE == "transmission"
+      when: test_role == "" or test_role == "transmission"
 
     - name: Verify transmission container is running
       ansible.builtin.assert:
         that:
           - transmission_info.container.State.Status == "running"
         fail_msg: "transmission container is not running"
-      when: ansible_env.TEST_ROLE is undefined or ansible_env.TEST_ROLE == "transmission"
+      when: test_role == "" or test_role == "transmission"
