@@ -29,6 +29,13 @@
    "format": 1
   },
   {
+   "name": ".ansible/collections/ansible_collections/compscidr",
+   "ftype": "dir",
+   "chksum_type": null,
+   "chksum_sha256": null,
+   "format": 1
+  },
+  {
    "name": ".ansible/.lock",
    "ftype": "file",
    "chksum_type": "sha256",
@@ -61,6 +68,13 @@
    "ftype": "file",
    "chksum_type": "sha256",
    "chksum_sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+   "format": 1
+  },
+  {
+   "name": "COPILOT_INSTRUCTIONS.md",
+   "ftype": "file",
+   "chksum_type": "sha256",
+   "chksum_sha256": "76293c91a76811f8458346c59b55a345346b5e274383c520de733466297141b1",
    "format": 1
   },
   {
@@ -704,7 +718,7 @@
    "name": "CHANGELOG.md",
    "ftype": "file",
    "chksum_type": "sha256",
-   "chksum_sha256": "37d6504857a9d945ff2143b75b74a7033ab22268cf5b98b2f10634ed86d47abd",
+   "chksum_sha256": "2ea121dadf941df2add91cbc09f51389757e3719fcaeddace89afbc53f94011d",
    "format": 1
   },
   {
