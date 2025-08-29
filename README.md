@@ -82,6 +82,7 @@ plex_dlna_server_port                   | The port plex will listen on for DNLA 
 plex_folder                             | plex config folder
 plex_tv_folder                          | where plex tv shows are located
 plex_movies_folder                      | where plex movies are located
+plex_music_folder                       | where plex music is located
 plex_tz                                 | plex timezome
 plex_pid                                | the user id for volume permissions
 plex_gid                                | the group id for volume permissions

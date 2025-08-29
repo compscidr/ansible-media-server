@@ -31,6 +31,7 @@
       - "{{ plex_folder }}:/config:rw"
       - "{{ plex_tv_folder }}:/tv:rw"
       - "{{ plex_movies_folder }}:/movies:rw"
+      - "{{ plex_music_folder }}:/music:rw"
     env:
       TZ: "{{ plex_tz }}"
       PUID: "{{ plex_pid }}"
@@ -62,6 +63,7 @@
       - "{{ plex_folder }}:/config:rw"
       - "{{ plex_tv_folder }}:/tv:rw"
       - "{{ plex_movies_folder }}:/movies:rw"
+      - "{{ plex_music_folder }}:/music:rw"
     devices:
       - /dev/dvb:/dev/dvb
     env:
@@ -95,6 +97,7 @@
       - "{{ plex_folder }}:/config:rw"
       - "{{ plex_tv_folder }}:/tv:rw"
       - "{{ plex_movies_folder }}:/movies:rw"
+      - "{{ plex_music_folder }}:/music:rw"
     devices:
       - /dev/dri:/dev/dri
     env:
@@ -128,6 +131,7 @@
       - "{{ plex_folder }}:/config:rw"
       - "{{ plex_tv_folder }}:/tv:rw"
       - "{{ plex_movies_folder }}:/movies:rw"
+      - "{{ plex_music_folder }}:/music:rw"
     devices:
       - /dev/dri:/dev/dri
       - /dev/dvb:/dev/dvb
