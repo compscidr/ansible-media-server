@@ -1,4 +1,6 @@
 .vscode
 
-# Ansible lock files
-**/.ansible/.lock
+# Ansible files
+.ansible/
+**/.ansible/
+*.lock
