@@ -1,8 +1,0 @@
----
-transmission_port: 9091
-transmission_folder: /etc/transmission
-transmission_downloads_folder: /storage/downloads
-transmission_pid: "1000"
-transmission_gid: "1000"
-transmission_tz: "America/Los_Angeles"
-transmission_env_file: "{{ transmission_folder }}/.env"

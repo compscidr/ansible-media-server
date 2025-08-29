@@ -1,6 +1,0 @@
-.vscode
-
-# Ansible files
-.ansible/
-**/.ansible/
-*.lock
