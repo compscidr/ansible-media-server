@@ -1,0 +1,42 @@
+{
+ "collection_info": {
+  "namespace": "compscidr",
+  "name": "media_server",
+  "version": "0.1.0",
+  "authors": [
+   "Jason Ernst <ernstjason1@gmail.com>"
+  ],
+  "readme": "README.md",
+  "tags": [
+   "docker",
+   "sonarr",
+   "radarr",
+   "plex",
+   "ombi",
+   "transmission",
+   "flaresolverr",
+   "jackett",
+   "prowlarr",
+   "lidarr",
+   "infrastructure"
+  ],
+  "description": "A collection of roles for running a media server in docker containers - sonarr, radarr, plex, ombi, transmission, etc",
+  "license": [],
+  "license_file": "LICENSE",
+  "dependencies": {
+   "community.docker": "*"
+  },
+  "repository": "https://github.com/compscidr/ansible-media-server",
+  "documentation": null,
+  "homepage": null,
+  "issues": null
+ },
+ "file_manifest_file": {
+  "name": "FILES.json",
+  "ftype": "file",
+  "chksum_type": "sha256",
+  "chksum_sha256": "d2517b11bd95a1acc1ad44242502d7dd88f51d6df506eb0aef1441cecb6b2920",
+  "format": 1
+ },
+ "format": 1
+}

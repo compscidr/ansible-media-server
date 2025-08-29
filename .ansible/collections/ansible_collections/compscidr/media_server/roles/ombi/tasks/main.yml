@@ -1,0 +1,30 @@
+---
+- name: Create Ombi Directories
+  tags: ombi
+  become: true
+  ansible.builtin.file:
+    mode: "755"
+    path: "{{ ombi_folder }}"
+    state: directory
+
+- name: Deploy ombi
+  tags: ombi
+  become: true
+  community.docker.docker_container:
+    name: ombi
+    image: lscr.io/linuxserver/ombi:latest
+    pull: true
+    ports:
+      - "{{ ombi_port }}:3579"
+    volumes:
+      - "{{ ombi_folder }}:/config:rw"
+    env:
+      TZ: "{{ ombi_tz }}"
+      PUID: "{{ ombi_pid }}"
+      PGID: "{{ ombi_gid }}"
+      VIRTUAL_HOST: "{{ ombi_virtual_host }}"
+      VIRTUAL_PORT: "{{ ombi_virtual_port }}"
+      LETSENCRYPT_HOST: "{{ ombi_letsencrypt_host }}"
+      LETSENCRYPT_EMAIL: "{{ ombi_letsencrypt_email }}"
+    restart_policy: unless-stopped
+    memory: "{{ ombi_memory }}"

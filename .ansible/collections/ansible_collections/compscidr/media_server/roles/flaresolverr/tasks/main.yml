@@ -1,0 +1,15 @@
+---
+- name: Deploy flaresolverr
+  tags: flaresolverr
+  become: true
+  community.docker.docker_container:
+    name: flaresolverr
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    pull: true
+    ports:
+      - "{{ flare_port }}:8191"
+    env:
+      CAPTCHA_SOLVER: "{{ flare_captcha_solver }}"
+      TZ: "{{ flare_tz }}"
+    restart_policy: unless-stopped
+    memory: "{{ flare_memory }}"

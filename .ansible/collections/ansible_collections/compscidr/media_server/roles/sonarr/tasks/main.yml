@@ -1,0 +1,40 @@
+---
+- name: Ensure docker is installed on the target system
+  tags: docker
+  ansible.builtin.include_role:
+    name: nickjj.docker
+    apply:
+      become: true # without this, it will end up failing and retrying over and over to install deps
+  when: install_docker
+
+- name: Create Sonarr Directories
+  tags: sonarr
+  become: true
+  ansible.builtin.file:
+    path: "{{ sonarr_folder }}"
+    state: directory
+    mode: "755"
+    owner: root
+    group: root
+
+- name: Deploy sonarr
+  tags: sonarr
+  become: true
+  community.docker.docker_container:
+    name: sonarr
+    image: lscr.io/linuxserver/sonarr:latest
+    pull: true
+    ports:
+      - "{{ sonarr_port }}:8989"
+    volumes:
+      - "{{ sonarr_tv_folder }}:/tv:rw"
+      - "{{ sonarr_tranmissions_downloads_folder }}:/config/Downloads:rw"
+      - "{{ sonarr_tranmissions_downloads_folder }}:/data:rw"
+      - "{{ sonarr_sabnzbd_downoads_folder }}:/configs/Downloads/complete:rw"
+      - "{{ sonarr_folder }}:/config:rw"
+    env:
+      TZ: "{{ sonarr_tz }}"
+      PUID: "{{ sonarr_pid }}"
+      PGID: "{{ sonarr_gid }}"
+    restart_policy: unless-stopped
+    memory: 1g

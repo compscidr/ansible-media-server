@@ -1,0 +1,8 @@
+---
+sabnzbd_folder: /etc/sabnzbd
+sabnzbd_download_folder: /storage/downloads
+sabnzbd_port: 8080
+sabnzbd_tz: "America/Los_Angeles"
+sabnzbd_pid: "1000"
+sabnzbd_gid: "1000"
+sabnzbd_memory: "1g"

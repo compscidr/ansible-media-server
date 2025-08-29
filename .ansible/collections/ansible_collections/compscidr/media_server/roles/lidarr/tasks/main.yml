@@ -1,0 +1,40 @@
+---
+- name: Ensure docker is installed on the target system
+  tags: docker
+  ansible.builtin.include_role:
+    name: nickjj.docker
+    apply:
+      become: true # without this, it will end up failing and retrying over and over to install deps
+  when: install_docker
+
+- name: Create Lidarr Directories
+  tags: lidarr
+  become: true
+  ansible.builtin.file:
+    path: "{{ lidarr_folder }}"
+    state: directory
+    mode: "755"
+    owner: root
+    group: root
+
+- name: Deploy lidarr
+  tags: lidarr
+  become: true
+  community.docker.docker_container:
+    name: lidarr
+    image: lscr.io/linuxserver/lidarr:latest
+    pull: true
+    ports:
+      - "{{ lidarr_port }}:8686"
+    volumes:
+      - "{{ lidarr_music_folder }}:/music:rw"
+      - "{{ lidarr_transmission_downloads_folder }}:/config/Downloads:rw"
+      - "{{ lidarr_transmission_downloads_folder }}:/data:rw"
+      - "{{ lidarr_sabnzbd_downoads_folder }}:/config/Downloads/complete:rw"
+      - "{{ lidarr_folder }}:/config:rw"
+    env:
+      TZ: "{{ lidarr_tz }}"
+      PUID: "{{ lidarr_pid }}"
+      PGID: "{{ lidarr_gid }}"
+    restart_policy: unless-stopped
+    memory: "{{ lidarr_memory }}"

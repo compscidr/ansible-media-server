@@ -1,0 +1,30 @@
+---
+- name: Create Sabnzbd Directories
+  tags: sabnzbd
+  become: true
+  ansible.builtin.file:
+    path: "{{ sabnzbd_folder }}"
+    state: directory
+    mode: "755"
+    owner: root
+    group: root
+
+- name: Deploy sabnzbd
+  tags: sabnzbd
+  become: true
+  community.docker.docker_container:
+    name: sabnzbd
+    image: lscr.io/linuxserver/sabnzbd:latest
+    pull: true
+    volumes:
+      - "{{ sabnzbd_folder }}:/config:rw"
+      - "{{ sabnzbd_download_folder }}:/config/Downloads:rw"
+    ports:
+      - "{{ sabnzbd_port }}:8080"
+    env:
+      TZ: "{{ sabnzbd_tz }}"
+      PUID: "{{ sabnzbd_pid }}"
+      PGID: "{{ sabnzbd_gid }}"
+      AUTO_UPDATE: "true"
+    restart_policy: unless-stopped
+    memory: "{{ sabnzbd_memory }}"
