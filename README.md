@@ -6,6 +6,7 @@
 A collection of roles for running a media server with docker containers:
 - flaresolverr
 - jackett
+- lidarr
 - ombi
 - plex
 - prowlarr
@@ -93,6 +94,14 @@ prowlarr_folder                         | prowlarr config folder
 prowlarr_tz                             | prowlarr timzeone
 prowlarr_pid                            | the user id for volume permissions
 prowlarr_gid                            | the group id for volume permissions
+lidarr_folder                           | lidarr config folder
+lidarr_music_folder                     | where the completed music should be moved to
+lidarr_transmission_downloads_folder    | transmission download folder
+lidarr_sabnzbd_downoads_folder          | sabnzbd download folder
+lidarr_port                             | the port lidarr will listen on
+lidarr_tz                               | lidarr timezone
+lidarr_pid                              | the user id for volume permissions
+lidarr_gid                              | the group id for volume permissions
 radarr_folder                           | radarr config folder
 radarr_movies_folder                    | where the completed moves should be moved to
 radarr_transmission_downloads_folder    | transmission download folder
