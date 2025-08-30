@@ -1,4 +1,8 @@
 ---
+# Docker installation control
+radarr_install_docker: false
+
+# Radarr configuration
 radarr_folder: /etc/radarr
 radarr_movies_folder: /storage/movies
 radarr_transmission_downloads_folder: /storage/downloads

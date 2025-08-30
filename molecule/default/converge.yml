@@ -1,0 +1,57 @@
+---
+- name: Converge
+  hosts: all
+  become: true
+  tasks:
+    # If test_role is defined (CI matrix), run only that role
+    # If test_role is not defined (local testing), run all roles
+
+    - name: "Include plex role"
+      ansible.builtin.include_role:
+        name: "plex"
+      when: test_role == "" or test_role == "plex"
+
+    - name: "Include ombi role"
+      ansible.builtin.include_role:
+        name: "ombi"
+      when: test_role == "" or test_role == "ombi"
+
+    - name: "Include radarr role"
+      ansible.builtin.include_role:
+        name: "radarr"
+      when: test_role == "" or test_role == "radarr"
+
+    - name: "Include sonarr role"
+      ansible.builtin.include_role:
+        name: "sonarr"
+      when: test_role == "" or test_role == "sonarr"
+
+    - name: "Include lidarr role"
+      ansible.builtin.include_role:
+        name: "lidarr"
+      when: test_role == "" or test_role == "lidarr"
+
+    - name: "Include prowlarr role"
+      ansible.builtin.include_role:
+        name: "prowlarr"
+      when: test_role == "" or test_role == "prowlarr"
+
+    - name: "Include jackett role"
+      ansible.builtin.include_role:
+        name: "jackett"
+      when: test_role == "" or test_role == "jackett"
+
+    - name: "Include sabnzbd role"
+      ansible.builtin.include_role:
+        name: "sabnzbd"
+      when: test_role == "" or test_role == "sabnzbd"
+
+    - name: "Include flaresolverr role"
+      ansible.builtin.include_role:
+        name: "flaresolverr"
+      when: test_role == "" or test_role == "flaresolverr"
+
+    - name: "Include transmission role"
+      ansible.builtin.include_role:
+        name: "transmission"
+      when: test_role == "" or test_role == "transmission"

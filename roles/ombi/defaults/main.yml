@@ -5,7 +5,7 @@ ombi_folder: /etc/ombi
 ombi_gid: "1000"
 ombi_pid: "1000"
 ombi_virtual_host: ""
-ombi_virtual_port: "{{ ombi_port }}"
+ombi_virtual_port: "{{ ombi_port | string }}"
 ombi_letsencrypt_host: "{{ ombi_virtual_host }}"
 ombi_letsencrypt_email: ""
 ombi_memory: "1g"

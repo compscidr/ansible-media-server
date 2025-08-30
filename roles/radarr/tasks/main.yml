@@ -5,7 +5,7 @@
     name: nickjj.docker
     apply:
       become: true # without this, it will end up failing and retrying over and over to install deps
-  when: install_docker
+  when: radarr_install_docker
 
 - name: Create Radarr Directories
   tags: radarr

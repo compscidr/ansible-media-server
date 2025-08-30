@@ -52,7 +52,6 @@ Use in a playbook:
 # Variables
 Variable                                | Description
 --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-install_docker                          | Set to true to install docker with the nickjj.docker role (defaults to false)
 flare_port                              | The port flaresolverr will listen on
 flare_captcha_solver                    | The captcha solver used for flaresolverr
 flare_tz                                | The timezone to use for flaresolverr
@@ -95,6 +94,7 @@ prowlarr_folder                         | prowlarr config folder
 prowlarr_tz                             | prowlarr timzeone
 prowlarr_pid                            | the user id for volume permissions
 prowlarr_gid                            | the group id for volume permissions
+lidarr_install_docker                   | Set to true to install docker for lidarr role (defaults to false)
 lidarr_folder                           | lidarr config folder
 lidarr_music_folder                     | where the completed music should be moved to
 lidarr_transmission_downloads_folder    | transmission download folder
@@ -103,6 +103,7 @@ lidarr_port                             | the port lidarr will listen on
 lidarr_tz                               | lidarr timezone
 lidarr_pid                              | the user id for volume permissions
 lidarr_gid                              | the group id for volume permissions
+radarr_install_docker                   | Set to true to install docker for radarr role (defaults to false)
 radarr_folder                           | radarr config folder
 radarr_movies_folder                    | where the completed moves should be moved to
 radarr_transmission_downloads_folder    | transmission download folder
@@ -117,6 +118,7 @@ sabnzbd_port                            | port sabnzbd will listen on
 sabnzbd_tz                              | sabnzbd timezone
 sabnzbd_pid                             | the user id for volume permission
 sabnzbd_gid                             | the group id for volume permission
+sonarr_install_docker                   | Set to true to install docker for sonarr role (defaults to false)
 sonarr_folder                           | sonarr config folder
 sonarr_tv_folder                        | where the completed tv shows will be moved to
 sonarr_tranmissions_downloads_folder    | transmission download folder
