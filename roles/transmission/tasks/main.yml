@@ -19,6 +19,26 @@
     dest: "{{ transmission_env_file }}"
     mode: "600"
     force: false
+  when: lookup('env', 'CI') != 'true'
+
+- name: Create CI transmission .env file with VPN credentials
+  tags: transmission
+  become: true
+  ansible.builtin.copy:
+    content: |
+      OPENVPN_PROVIDER={{ lookup('env', 'OPENVPN_PROVIDER') | default('NORDVPN') }}
+      OPENVPN_USERNAME={{ lookup('env', 'OPENVPN_USERNAME') | default('') }}
+      OPENVPN_PASSWORD={{ lookup('env', 'OPENVPN_PASSWORD') | default('') }}
+      NORDVPN_PROTOCOL={{ lookup('env', 'NORDVPN_PROTOCOL') | default('udp') }}
+      NORDVPN_CATEGORY={{ lookup('env', 'NORDVPN_CATEGORY') | default('legacy_p2p') }}
+      NORDVPN_COUNTRY={{ lookup('env', 'NORDVPN_COUNTRY') | default('United States') }}
+      LOCAL_NETWORK=172.0.0.0/8
+      TRANSMISSION_SCRAPE_PAUSED_TORRENTS=false
+      TRANSMISSION_RATIO_LIMIT=0
+      TRANSMISSION_RATIO_LIMIT_ENABLED=true
+    dest: "{{ transmission_env_file }}"
+    mode: "600"
+  when: lookup('env', 'CI') == 'true'
 
 - name: Deploy transmission
   tags: transmission

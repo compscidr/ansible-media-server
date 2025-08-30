@@ -65,3 +65,10 @@ jobs:
           MOLECULE_NO_LOG: false
           CI: true
           ANSIBLE_TEST_ROLE: ${{ matrix.role }}
+          # VPN credentials for transmission testing
+          OPENVPN_PROVIDER: ${{ secrets.OPENVPN_PROVIDER }}
+          OPENVPN_USERNAME: ${{ secrets.OPENVPN_USERNAME }}
+          OPENVPN_PASSWORD: ${{ secrets.OPENVPN_PASSWORD }}
+          NORDVPN_PROTOCOL: ${{ secrets.NORDVPN_PROTOCOL }}
+          NORDVPN_CATEGORY: ${{ secrets.NORDVPN_CATEGORY }}
+          NORDVPN_COUNTRY: ${{ secrets.NORDVPN_COUNTRY }}

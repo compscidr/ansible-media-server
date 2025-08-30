@@ -133,6 +133,7 @@
     - name: Verify transmission container is running
       ansible.builtin.assert:
         that:
+          - transmission_info.exists
           - transmission_info.container.State.Status == "running"
         fail_msg: "transmission container is not running"
       when: test_role == "" or test_role == "transmission"
