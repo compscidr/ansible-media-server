@@ -1,0 +1,27 @@
+---
+# Example external playbook showing how to use the media server roles
+# This demonstrates the proper way to set install_docker variables
+- name: Deploy Media Server Components
+  hosts: all
+  become: true
+  vars:
+    # Enable Docker installation for roles that need it
+    lidarr_install_docker: true
+    sonarr_install_docker: true  
+    radarr_install_docker: true
+    
+    # Custom configuration for each service
+    lidarr_folder: /opt/lidarr
+    sonarr_folder: /opt/sonarr
+    radarr_folder: /opt/radarr
+    
+    # Storage paths
+    lidarr_music_folder: /storage/music
+    sonarr_tv_folder: /storage/tv
+    radarr_movies_folder: /storage/movies
+    
+  roles:
+    # Install media management services
+    - lidarr
+    - sonarr  
+    - radarr
