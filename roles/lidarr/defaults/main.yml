@@ -6,7 +6,7 @@ lidarr_install_docker: false
 lidarr_folder: /etc/lidarr
 lidarr_music_folder: /storage/music
 lidarr_transmission_downloads_folder: /storage/downloads
-lidarr_sabnzbd_downoads_folder: /config/Downloads/complete
+lidarr_sabnzbd_downloads_folder: /config/Downloads/complete
 lidarr_port: 8686
 lidarr_tz: "America/Los_Angeles"
 lidarr_pid: "1000"
