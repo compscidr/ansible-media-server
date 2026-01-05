@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.1] - 2026-01-05
+
+### Fixed
+- **SABnzbd**: Removed nested `/config/Downloads` mount in SABnzbd role
+  - Changed downloads mount from `/config/Downloads` to `/downloads`
+  - Ensures SABnzbd and *arr apps see downloads at consistent paths
+  - Prevents same nested mount issues that affected Sonarr/Radarr/Lidarr
+
 ## [1.0.0] - 2026-01-05
 
 ### Breaking Changes
