@@ -31,8 +31,8 @@ Variable                                | Description
 install_docker                          | Set to true to install docker with the nickjj.docker role (defaults to false)
 sonarr_folder                           | sonarr config folder
 sonarr_tv_folder                        | where the completed tv shows will be moved to
-sonarr_tranmissions_downloads_folder    | transmission download folder
-sonarr_sabnzbd_downoads_folder:         | sabznbd downlod folder
+sonarr_transmissions_downloads_folder    | transmission download folder
+sonarr_sabnzbd_downloads_folder:         | sabznbd downlod folder
 sonarr_port                             | the port where sonarr will listen on
 sonarr_tz                               | sonarr timezone
 sonarr_pid                              | the user id for volume permissions
