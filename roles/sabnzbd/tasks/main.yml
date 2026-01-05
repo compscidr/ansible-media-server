@@ -18,7 +18,7 @@
     pull: true
     volumes:
       - "{{ sabnzbd_folder }}:/config:rw"
-      - "{{ sabnzbd_download_folder }}:/config/Downloads:rw"
+      - "{{ sabnzbd_download_folder }}:/downloads:rw"
     ports:
       - "{{ sabnzbd_port }}:8080"
     env:
