@@ -31,7 +31,7 @@ Variable                                | Description
 radarr_folder                           | radarr config folder
 radarr_movies_folder                    | where the completed moves should be moved to
 radarr_transmission_downloads_folder    | transmission download folder
-radarr_sabnzbd_downoads_folder          | sabnzbd download folder
+radarr_sabnzbd_downloads_folder          | sabnzbd download folder
 radarr_port                             | the port raddarr will listen on
 radarr_tz                               | radarr timezone
 radarr_pid                              | the user id for volume permissions
