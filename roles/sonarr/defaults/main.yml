@@ -11,3 +11,5 @@ sonarr_port: 8989
 sonarr_tz: "America/Los_Angeles"
 sonarr_pid: "1000"
 sonarr_gid: "1000"
+sonarr_memory: "1g"
+sonarr_memory_swap: "1g"

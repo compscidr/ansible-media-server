@@ -39,6 +39,7 @@
       PLEX_CLAIM: "{{ plex_claim }}"
     restart_policy: unless-stopped
     memory: "{{ plex_memory }}"
+    memory_swap: "{{ plex_memory_swap }}"
   when: (not plex_dvb_devices) and (not plex_dri_devices)
 
 - name: Deploy plex with dvb devices
@@ -73,6 +74,7 @@
       PLEX_CLAIM: "{{ plex_claim }}"
     restart_policy: unless-stopped
     memory: "{{ plex_memory }}"
+    memory_swap: "{{ plex_memory_swap }}"
   when: plex_dvb_devices and (not plex_dri_devices)
 
 - name: Deploy plex with dri devices
@@ -107,6 +109,7 @@
       PLEX_CLAIM: "{{ plex_claim }}"
     restart_policy: unless-stopped
     memory: "{{ plex_memory }}"
+    memory_swap: "{{ plex_memory_swap }}"
   when: (not plex_dvb_devices) and plex_dri_devices
 
 - name: Deploy plex with dri and dvb devices
@@ -142,4 +145,5 @@
       PLEX_CLAIM: "{{ plex_claim }}"
     restart_policy: unless-stopped
     memory: "{{ plex_memory }}"
+    memory_swap: "{{ plex_memory_swap }}"
   when: plex_dvb_devices and plex_dri_devices
