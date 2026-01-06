@@ -62,3 +62,4 @@
       PUID: "{{ transmission_pid }}"
       PGID: "{{ transmission_gid }}"
     env_file: "{{ transmission_env_file }}"
+    memory: "{{ transmission_memory }}"

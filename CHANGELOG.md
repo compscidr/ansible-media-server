@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2] - 2026-01-05
+
+### Added
+- **Transmission**: Added memory limit support
+  - Added `transmission_memory` parameter to role defaults (default: "1g")
+  - Container deployments now respect memory limits for better resource management
+
 ## [1.0.1] - 2026-01-05
 
 ### Fixed
