@@ -19,3 +19,4 @@ plex_dvb_devices: false
 plex_dri_devices: false
 plex_claim: ""
 plex_memory: "1g"
+plex_memory_swap: "1g"

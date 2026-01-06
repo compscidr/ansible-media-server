@@ -36,4 +36,5 @@
       PUID: "{{ sonarr_pid }}"
       PGID: "{{ sonarr_gid }}"
     restart_policy: unless-stopped
-    memory: 1g
+    memory: "{{ sonarr_memory }}"
+    memory_swap: "{{ sonarr_memory_swap }}"

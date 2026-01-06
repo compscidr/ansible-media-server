@@ -26,3 +26,4 @@
       PGID: "{{ prowlarr_gid }}"
     restart_policy: unless-stopped
     memory: "{{ prowlarr_memory }}"
+    memory_swap: "{{ prowlarr_memory_swap }}"

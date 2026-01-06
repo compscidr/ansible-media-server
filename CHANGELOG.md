@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.0.3] - 2026-01-05
+
+### Added
+- **All roles**: Added memory_swap support to prevent Docker memory limit errors
+  - Added `*_memory_swap` parameters to all role defaults
+  - Prevents "Memory limit should be smaller than memoryswap limit" errors
+  - Memory swap set equal to memory limit to disable swap for better performance
+
+### Changed
+- **Sonarr**: Changed hardcoded memory value to use variable
+  - Added `sonarr_memory` and `sonarr_memory_swap` parameters for consistency
+  - Now follows the same pattern as other roles
+
 ## [1.0.2] - 2026-01-05
 
 ### Added

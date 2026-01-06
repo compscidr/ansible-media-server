@@ -11,4 +11,5 @@ radarr_port: 7878
 radarr_tz: "America/Los_Angeles"
 radarr_pid: "1000"
 radarr_gid: "1000"
-radarr_memory: "2g"
+radarr_memory: "1g"
+radarr_memory_swap: "1g"
