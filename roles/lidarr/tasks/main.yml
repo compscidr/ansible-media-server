@@ -28,8 +28,8 @@
       - "{{ lidarr_port }}:8686"
     volumes:
       - "{{ lidarr_music_folder }}:/music:rw"
-      - "{{ lidarr_transmission_downloads_folder }}:/downloads:rw"
       - "{{ lidarr_sabnzbd_downloads_folder }}:/downloads/complete:rw"
+      - "{{ lidarr_transmission_downloads_folder }}:/data:rw"
       - "{{ lidarr_folder }}:/config:rw"
     env:
       TZ: "{{ lidarr_tz }}"
