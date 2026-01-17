@@ -28,6 +28,7 @@ Use in a playbook:
 # Variables
 Variable                                | Description
 --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+lidarr_plugins                          | use the hotio plugins image (ghcr.io/hotio/lidarr:pr-plugins) instead of the default linuxserver image (default: false)
 lidarr_folder                           | lidarr config folder
 lidarr_music_folder                     | where the completed music should be moved to
 lidarr_transmission_downloads_folder    | transmission download folder

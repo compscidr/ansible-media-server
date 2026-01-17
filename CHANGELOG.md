@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.0.7] - 2026-01-17
+- **Lidarr**: Added `lidarr_plugins` variable to enable using the hotio plugins image (ghcr.io/hotio/lidarr:pr-plugins) instead of the default linuxserver image
+
 ## [1.0.6] = 2026-01-17
 - Fixed paths to prevent overlapping mounts
 
