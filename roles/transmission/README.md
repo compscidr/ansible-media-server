@@ -31,7 +31,7 @@ Variable                                | Description
 transmission_port                       | port transmission will listen on for web UI
 transmission_peer_port                  | port transmission listens on for peers
 transmission_folder                     | transmission config folder
-transmission_downloads_folder           | tranmission download folder
+transmission_downloads_folder           | transmission download folder
 transmission_pid                        | the user id for volume permissions
 transmission_gid                        | the group id for volume permissions
 transmission_tz                         | transmission timezone
