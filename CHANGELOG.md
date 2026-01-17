@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.0.4] - 2026-01-17
+- Transmission: Added a peer port to the exposed ports
+
 ## [1.0.3] - 2026-01-05
 
 ### Added
