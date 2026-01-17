@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.0.6] = 2026-01-17
+- Fixed paths to prevent overlapping mounts
+
 ## [1.0.5] - 2026-01-17
 - Fixed paths for radarr, sonarr, lidarr wrt transmission so that remote mappings 
   aren't required (the -arrs expect transmission downloads in /data)
