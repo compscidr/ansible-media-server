@@ -2,7 +2,7 @@
 
 ## [1.0.5] - 2026-01-17
 - Fixed paths for radarr, sonarr, lidarr wrt transmission so that remote mappings 
-  aren't required (the -arrs expect tranmission downloads in /data)
+  aren't required (the -arrs expect transmission downloads in /data)
 
 ## [1.0.4] - 2026-01-17
 - Transmission: Added a peer port to the exposed ports
