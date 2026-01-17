@@ -28,7 +28,6 @@ Use in a playbook:
 # Variables
 Variable                                | Description
 --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-install_docker                          | Set to true to install docker with the nickjj.docker role (defaults to false)
 sabnzbd_folder                          | config folder
 sabnzbd_download_folder                 | sabnzbd download folder
 sabnzbd_port                            | port sabnzbd will listen on

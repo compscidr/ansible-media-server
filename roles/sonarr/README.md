@@ -28,7 +28,6 @@ Use in a playbook:
 # Variables
 Variable                                | Description
 --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-install_docker                          | Set to true to install docker with the nickjj.docker role (defaults to false)
 sonarr_folder                           | sonarr config folder
 sonarr_tv_folder                        | where the completed tv shows will be moved to
 sonarr_transmissions_downloads_folder    | transmission download folder
