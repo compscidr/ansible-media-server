@@ -22,7 +22,7 @@
   become: true
   community.docker.docker_container:
     name: lidarr
-    image: lscr.io/linuxserver/lidarr:latest
+    image: "{{ 'ghcr.io/hotio/lidarr:pr-plugins' if lidarr_plugins else 'lscr.io/linuxserver/lidarr:latest' }}"
     pull: true
     ports:
       - "{{ lidarr_port }}:8686"

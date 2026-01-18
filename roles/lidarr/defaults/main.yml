@@ -3,6 +3,7 @@
 lidarr_install_docker: false
 
 # Lidarr configuration
+lidarr_plugins: false
 lidarr_folder: /etc/lidarr
 lidarr_music_folder: /storage/music
 lidarr_transmission_downloads_folder: /storage/downloads

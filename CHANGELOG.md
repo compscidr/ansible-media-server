@@ -29,6 +29,9 @@
   - `media_storage`: Optional role for services needing shared media folders
   - Prevents unnecessary folder creation for services that don't need it
 
+## [1.0.7] - 2026-01-17
+- **Lidarr**: Added `lidarr_plugins` variable to enable using the hotio plugins image (ghcr.io/hotio/lidarr:pr-plugins) instead of the default linuxserver image
+
 ## [1.0.6] - 2026-01-17
 - Fixed paths to prevent overlapping mounts
 
