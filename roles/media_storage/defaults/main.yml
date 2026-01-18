@@ -1,0 +1,16 @@
+---
+# Shared media storage configuration
+# This role creates media directories with proper ownership
+# Note: This role depends on media_user which detects UID/GID
+
+# Base storage path - can be customized per deployment
+media_storage_base_path: /storage
+
+# Media directories to create
+media_storage_directories:
+  - "{{ media_storage_base_path }}"
+  - "{{ media_storage_base_path }}/downloads"
+  - "{{ media_storage_base_path }}/downloads/complete"
+  - "{{ media_storage_base_path }}/tv"
+  - "{{ media_storage_base_path }}/movies"
+  - "{{ media_storage_base_path }}/music"

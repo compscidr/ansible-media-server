@@ -1,0 +1,11 @@
+---
+- name: Create media folders
+  tags: plex, transmission, sabnzbd, sonarr, radarr, lidarr
+  become: true
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: '750'
+    owner: "{{ media_user_user }}"
+    group: "{{ media_user_group }}"
+  loop: "{{ media_storage_directories }}"

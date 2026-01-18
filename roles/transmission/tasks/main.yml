@@ -60,8 +60,8 @@
       - "{{ transmission_folder }}:/config"
     env:
       TZ: "{{ transmission_tz }}"
-      PUID: "{{ transmission_pid }}"
-      PGID: "{{ transmission_gid }}"
+      PUID: "{{ media_user_uid }}"
+      PGID: "{{ media_user_gid }}"
     env_file: "{{ transmission_env_file }}"
     memory: "{{ transmission_memory }}"
     memory_swap: "{{ transmission_memory_swap }}"

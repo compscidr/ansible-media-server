@@ -1,5 +1,6 @@
 ---
-dependencies: []
+dependencies:
+  - role: media_user
 galaxy_info:
   author: Jason Ernst
   role_name: prowlarr

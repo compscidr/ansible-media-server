@@ -33,8 +33,8 @@
       - "{{ radarr_folder }}:/config:rw"
     env:
       TZ: "{{ radarr_tz }}"
-      PUID: "{{ radarr_pid }}"
-      PGID: "{{ radarr_gid }}"
+      PUID: "{{ media_user_uid }}"
+      PGID: "{{ media_user_gid }}"
     restart_policy: unless-stopped
     memory: "{{ radarr_memory }}"
     memory_swap: "{{ radarr_memory_swap }}"

@@ -33,8 +33,8 @@
       - "{{ sonarr_folder }}:/config:rw"
     env:
       TZ: "{{ sonarr_tz }}"
-      PUID: "{{ sonarr_pid }}"
-      PGID: "{{ sonarr_gid }}"
+      PUID: "{{ media_user_uid }}"
+      PGID: "{{ media_user_gid }}"
     restart_policy: unless-stopped
     memory: "{{ sonarr_memory }}"
     memory_swap: "{{ sonarr_memory_swap }}"
