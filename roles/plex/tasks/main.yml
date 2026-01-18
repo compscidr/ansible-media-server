@@ -34,8 +34,8 @@
       - "{{ plex_music_folder }}:/music:rw"
     env:
       TZ: "{{ plex_tz }}"
-      PUID: "{{ plex_pid }}"
-      PGID: "{{ plex_gid }}"
+      PUID: "{{ media_user_uid }}"
+      PGID: "{{ media_user_gid }}"
       PLEX_CLAIM: "{{ plex_claim }}"
     restart_policy: unless-stopped
     memory: "{{ plex_memory }}"
@@ -69,8 +69,8 @@
       - /dev/dvb:/dev/dvb
     env:
       TZ: "{{ plex_tz }}"
-      PUID: "{{ plex_pid }}"
-      PGID: "{{ plex_gid }}"
+      PUID: "{{ media_user_uid }}"
+      PGID: "{{ media_user_gid }}"
       PLEX_CLAIM: "{{ plex_claim }}"
     restart_policy: unless-stopped
     memory: "{{ plex_memory }}"
@@ -104,8 +104,8 @@
       - /dev/dri:/dev/dri
     env:
       TZ: "{{ plex_tz }}"
-      PUID: "{{ plex_pid }}"
-      PGID: "{{ plex_gid }}"
+      PUID: "{{ media_user_uid }}"
+      PGID: "{{ media_user_gid }}"
       PLEX_CLAIM: "{{ plex_claim }}"
     restart_policy: unless-stopped
     memory: "{{ plex_memory }}"
@@ -140,8 +140,8 @@
       - /dev/dvb:/dev/dvb
     env:
       TZ: "{{ plex_tz }}"
-      PUID: "{{ plex_pid }}"
-      PGID: "{{ plex_gid }}"
+      PUID: "{{ media_user_uid }}"
+      PGID: "{{ media_user_gid }}"
       PLEX_CLAIM: "{{ plex_claim }}"
     restart_policy: unless-stopped
     memory: "{{ plex_memory }}"

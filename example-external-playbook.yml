@@ -5,6 +5,15 @@
   hosts: all
   become: true
   vars:
+    # Shared media user configuration
+    # These settings control PUID/PGID for all containers
+    # UID/GID are automatically detected from the system - no need to specify them
+    media_user_user: jason
+    media_user_group: admin
+
+    # Media storage configuration
+    media_storage_base_path: /volume1/storage
+
     # Enable Docker installation for roles that need it
     lidarr_install_docker: true
     sonarr_install_docker: true
@@ -15,13 +24,14 @@
     sonarr_folder: /opt/sonarr
     radarr_folder: /opt/radarr
 
-    # Storage paths
+    # Storage paths (will be created automatically by media_storage role)
     lidarr_music_folder: /storage/music
     sonarr_tv_folder: /storage/tv
     radarr_movies_folder: /storage/movies
 
   roles:
     # Install media management services
+    # Note: media_storage role runs automatically as a dependency
     - lidarr
     - sonarr
     - radarr

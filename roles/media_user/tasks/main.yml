@@ -1,0 +1,22 @@
+---
+- name: Get user information
+  tags: plex, transmission, sabnzbd, sonarr, radarr, lidarr, ombi, prowlarr, jackett
+  become: true
+  ansible.builtin.getent:
+    database: passwd
+    key: "{{ media_user_user }}"
+  register: media_user_getent_passwd
+
+- name: Get group information
+  tags: plex, transmission, sabnzbd, sonarr, radarr, lidarr, ombi, prowlarr, jackett
+  become: true
+  ansible.builtin.getent:
+    database: group
+    key: "{{ media_user_group }}"
+  register: media_user_getent_group
+
+- name: Set UID and GID from system user
+  tags: plex, transmission, sabnzbd, sonarr, radarr, lidarr, ombi, prowlarr, jackett
+  ansible.builtin.set_fact:
+    media_user_uid: "{{ getent_passwd[media_user_user][1] }}"
+    media_user_gid: "{{ getent_group[media_user_group][1] }}"

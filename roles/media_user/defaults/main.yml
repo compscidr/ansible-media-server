@@ -1,0 +1,9 @@
+---
+# Media user configuration
+# This role detects the UID/GID for the specified user/group
+# and makes them available to all media-related roles
+
+# User and group names - must exist on the target system
+# The UID and GID will be automatically detected from these at runtime
+media_user_user: media_user
+media_user_group: media_user_group

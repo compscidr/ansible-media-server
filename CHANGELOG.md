@@ -1,6 +1,35 @@
 # Changelog
 
-## [1.0.6] = 2026-01-17
+## [1.1.0] - 2026-01-17
+
+### Added
+- **New `media_user` role**: Automatically detects UID/GID from system user/group
+  - Uses `getent` to query system passwd and group databases
+  - Sets `media_user_uid` and `media_user_gid` as Ansible facts
+  - Eliminates need to manually specify PUID/PGID values
+- **New `media_storage` role**: Creates shared media directories with proper ownership
+  - Depends on `media_user` for UID/GID detection
+  - Creates configurable media directories (downloads, tv, movies, music, etc.)
+  - Ensures consistent permissions across all media containers
+
+### Changed
+- **All media roles**: Now use automatic UID/GID detection
+  - Roles with storage needs (plex, sonarr, radarr, lidarr, transmission, sabnzbd) depend on `media_storage`
+  - Roles without storage needs (ombi, prowlarr, jackett) depend on `media_user` only
+  - All roles use `media_user_uid` and `media_user_gid` for container PUID/PGID
+  - Removed hardcoded UID/GID defaults from individual role defaults
+- **Configuration simplified**: Users now only specify `media_user_user` and `media_user_group`
+  - UID/GID are automatically detected at runtime
+  - No more manual UID/GID lookups required
+  - Playbooks are more portable across different systems
+
+### Improved
+- **Role organization**: Clear separation between UID/GID detection and folder creation
+  - `media_user`: Foundation role for all media services
+  - `media_storage`: Optional role for services needing shared media folders
+  - Prevents unnecessary folder creation for services that don't need it
+
+## [1.0.6] - 2026-01-17
 - Fixed paths to prevent overlapping mounts
 
 ## [1.0.5] - 2026-01-17

@@ -9,7 +9,5 @@ lidarr_transmission_downloads_folder: /storage/downloads
 lidarr_sabnzbd_downloads_folder: /storage/downloads
 lidarr_port: 8686
 lidarr_tz: "America/Los_Angeles"
-lidarr_pid: "1000"
-lidarr_gid: "1000"
 lidarr_memory: "1g"
 lidarr_memory_swap: "1g"
