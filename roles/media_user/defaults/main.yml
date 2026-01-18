@@ -3,7 +3,8 @@
 # This role detects the UID/GID for the specified user/group
 # and makes them available to all media-related roles
 
-# User and group names - must exist on the target system
+# User and group names - MUST exist on the target system before running this role
 # The UID and GID will be automatically detected from these at runtime
-media_user_user: media_user
-media_user_group: media_user_group
+# Common choices: nobody/nogroup (most systems), media/media (custom), your username
+media_user_user: nobody
+media_user_group: nogroup

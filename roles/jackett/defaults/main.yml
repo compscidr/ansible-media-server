@@ -1,6 +1,6 @@
 ---
 jackett_folder: /etc/jackett
-jackett_download_folder: /storage/downloads
+jackett_download_folder: "{{ media_storage_base_path }}/downloads"
 jackett_port: 9117
 jackett_tz: "America/Los_Angeles"
 jackett_memory: "1g"

@@ -4,7 +4,7 @@
 # Note: This role depends on media_user which detects UID/GID
 
 # Base storage path - can be customized per deployment
-media_storage_base_path: /volume1/storage
+media_storage_base_path: /storage
 
 # Media directories to create
 media_storage_directories:

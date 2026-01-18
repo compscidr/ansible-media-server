@@ -2,7 +2,7 @@
 transmission_port: 9091
 transmission_peer_port: 51413
 transmission_folder: /etc/transmission
-transmission_downloads_folder: /storage/downloads
+transmission_downloads_folder: "{{ media_storage_base_path }}/downloads"
 transmission_tz: "America/Los_Angeles"
 transmission_env_file: "{{ transmission_folder }}/.env"
 transmission_memory: "1g"

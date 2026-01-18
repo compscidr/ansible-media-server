@@ -5,7 +5,7 @@
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
-    mode: '755'
+    mode: '750'
     owner: "{{ media_user_user }}"
     group: "{{ media_user_group }}"
   loop: "{{ media_storage_directories }}"

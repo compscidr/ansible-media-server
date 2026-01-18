@@ -12,7 +12,7 @@
     media_user_group: admin
 
     # Media storage configuration
-    media_storage_base_path: /volume1/storage
+    media_storage_base_path: /storage
 
     # Enable Docker installation for roles that need it
     lidarr_install_docker: true

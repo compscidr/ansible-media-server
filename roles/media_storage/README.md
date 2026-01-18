@@ -15,7 +15,7 @@ Available variables are listed below, along with default values (see `defaults/m
 
 ```yaml
 # Base path for all media storage
-media_storage_base_path: /volume1/storage
+media_storage_base_path: /storage
 
 # List of directories to create
 media_storage_directories:
@@ -28,6 +28,8 @@ media_storage_directories:
 ```
 
 **Note**: This role depends on `media_user` which detects UID/GID. Configure `media_user_user` and `media_user_group` in your playbook (see examples below).
+
+**Permissions**: Directories are created with mode `750` (owner: rwx, group: r-x, other: none) for security. Media content is readable by the owner and group, but not world-readable.
 
 ## Dependencies
 
@@ -55,10 +57,10 @@ Most commonly, you won't include this role directly. Instead, it will be automat
 - hosts: media_servers
   vars:
     # Configure user/group (UID/GID auto-detected)
-    media_user_user: jason
-    media_user_group: admin
+    media_user_user: nobody
+    media_user_group: nogroup
     # Configure storage paths
-    media_storage_base_path: /volume1/storage
+    media_storage_base_path: /storage
   roles:
     - plex       # Depends on media_storage -> media_user
     - sonarr     # Depends on media_storage -> media_user

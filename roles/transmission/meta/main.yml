@@ -3,8 +3,8 @@ dependencies:
   - role: media_storage
 galaxy_info:
   author: Jason Ernst
-  role_name: transmision
-  description: Installs and configures the transmision container
+  role_name: transmission
+  description: Installs and configures the transmission container
   company: ''
   license: GPLv3
   min_ansible_version: "2.4"
@@ -21,4 +21,4 @@ galaxy_info:
     - runner
     - docker
     - hosted
-    - transmision
+    - transmission

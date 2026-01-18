@@ -1,6 +1,6 @@
 ---
 sabnzbd_folder: /etc/sabnzbd
-sabnzbd_download_folder: /storage/downloads
+sabnzbd_download_folder: "{{ media_storage_base_path }}/downloads"
 sabnzbd_port: 8080
 sabnzbd_tz: "America/Los_Angeles"
 sabnzbd_memory: "1g"

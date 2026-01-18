@@ -4,9 +4,9 @@ sonarr_install_docker: false
 
 # Sonarr configuration
 sonarr_folder: /etc/sonarr
-sonarr_tv_folder: /storage/tv
-sonarr_transmissions_downloads_folder: /storage/downloads
-sonarr_sabnzbd_downloads_folder: /storage/downloads
+sonarr_tv_folder: "{{ media_storage_base_path }}/tv"
+sonarr_transmissions_downloads_folder: "{{ media_storage_base_path }}/downloads"
+sonarr_sabnzbd_downloads_folder: "{{ media_storage_base_path }}/downloads"
 sonarr_port: 8989
 sonarr_tz: "America/Los_Angeles"
 sonarr_memory: "1g"

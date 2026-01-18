@@ -14,11 +14,14 @@ The `media_user` role serves as a foundational dependency for all media-related 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
 ```yaml
-# User and group names - must exist on the target system
+# User and group names - MUST exist on the target system before running this role
 # The UID and GID will be automatically detected from these at runtime
-media_user_user: media_user
-media_user_group: media_user_group
+# Common choices: nobody/nogroup (most systems), media/media (custom), your username
+media_user_user: nobody
+media_user_group: nogroup
 ```
+
+**IMPORTANT:** The specified user and group must already exist on the target system. The role will fail if they don't exist. Use `nobody`/`nogroup` for a safe default available on most systems, or create a dedicated media user beforehand.
 
 The role automatically sets these facts (do not configure these manually):
 - `media_user_uid` - The detected UID
@@ -34,8 +37,8 @@ None. This role is designed to be a dependency for other media-related roles.
 - hosts: media_servers
   vars:
     # Specify the user/group - UID/GID are auto-detected
-    media_user_user: jason
-    media_user_group: admin
+    media_user_user: nobody
+    media_user_group: nogroup
   roles:
     - media_user
 ```
@@ -45,8 +48,8 @@ Most commonly, you won't include this role directly. It's automatically included
 ```yaml
 - hosts: media_servers
   vars:
-    media_user_user: jason
-    media_user_group: admin
+    media_user_user: nobody
+    media_user_group: nogroup
   roles:
     - plex       # Depends on media_storage -> media_user
     - sonarr     # Depends on media_storage -> media_user
