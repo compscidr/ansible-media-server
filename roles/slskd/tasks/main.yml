@@ -24,7 +24,6 @@
     name: slskd
     image: slskd/slskd:latest
     pull: true
-    user: "{{ media_user_uid }}:{{ media_user_gid }}"
     ports:
       - "{{ slskd_port }}:5030"
       - "{{ slskd_https_port }}:5031"

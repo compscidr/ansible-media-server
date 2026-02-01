@@ -44,7 +44,7 @@ soularr_networks: []
 
 ## Post-Installation
 
-After deployment, configure soularr by editing the config file in `{{ soularr_folder }}/data/`:
+After deployment, configure soularr by editing the config file in `{{ soularr_folder }}/`:
 1. Set your Lidarr API key and URL
 2. Set your slskd API key and URL
 3. Configure search preferences
