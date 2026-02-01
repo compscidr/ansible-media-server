@@ -22,6 +22,11 @@ provisioner:
   inventory:
     host_vars:
       instance:
+        # Media user/group for container PUID/PGID (must exist in container)
+        media_user_user: root
+        media_user_group: root
+        # Base storage path for media folders
+        media_storage_base_path: "/tmp/storage"
         # Override defaults for testing - use /tmp for test directories
         plex_folder: "/tmp/plex"
         plex_tv_folder: "/tmp/tv"
