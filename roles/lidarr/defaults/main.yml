@@ -12,3 +12,6 @@ lidarr_port: 8686
 lidarr_tz: "America/Los_Angeles"
 lidarr_memory: "1g"
 lidarr_memory_swap: "1g"
+
+# Docker network (use custom network for container name resolution)
+lidarr_networks: []

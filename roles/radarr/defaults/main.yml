@@ -11,3 +11,6 @@ radarr_port: 7878
 radarr_tz: "America/Los_Angeles"
 radarr_memory: "1g"
 radarr_memory_swap: "1g"
+
+# Docker network (use custom network for container name resolution)
+radarr_networks: []

@@ -1,16 +1,26 @@
 # Changelog
 
-## [1.1.0] - 2026-01-17
+## [1.1.0] - 2026-01-31
 
 ### Added
 - **New `media_user` role**: Automatically detects UID/GID from system user/group
   - Uses `getent` to query system passwd and group databases
   - Sets `media_user_uid` and `media_user_gid` as Ansible facts
   - Eliminates need to manually specify PUID/PGID values
+
 - **New `media_storage` role**: Creates shared media directories with proper ownership
   - Depends on `media_user` for UID/GID detection
   - Creates configurable media directories (downloads, tv, movies, music, etc.)
   - Ensures consistent permissions across all media containers
+
+- **All roles**: Added Docker network support for container name resolution
+  - Added `<role>_networks` variable to all roles (e.g., `sonarr_networks`, `radarr_networks`)
+  - Allows containers to be connected to custom Docker networks
+  - Enables containers to communicate by name instead of IP address
+
+- **Plex**: Added `plex_network_mode` variable (default: "bridge")
+  - Set to "host" for DLNA/UPnP discovery features
+  - Bridge mode allows container name resolution with custom networks
 
 ### Changed
 - **All media roles**: Now use automatic UID/GID detection
@@ -18,21 +28,17 @@
   - Roles without storage needs (ombi, prowlarr, jackett) depend on `media_user` only
   - All roles use `media_user_uid` and `media_user_gid` for container PUID/PGID
   - Removed hardcoded UID/GID defaults from individual role defaults
+
 - **Configuration simplified**: Users now only specify `media_user_user` and `media_user_group`
   - UID/GID are automatically detected at runtime
-  - No more manual UID/GID lookups required
-  - Playbooks are more portable across different systems
 
-### Improved
-- **Role organization**: Clear separation between UID/GID detection and folder creation
-  - `media_user`: Foundation role for all media services
-  - `media_storage`: Optional role for services needing shared media folders
-  - Prevents unnecessary folder creation for services that don't need it
+- **Plex**: Simplified role from 4 duplicate tasks to 1 dynamic task
+  - Devices (dri/dvb) now handled dynamically instead of separate task variants
 
 ## [1.0.7] - 2026-01-17
 - **Lidarr**: Added `lidarr_plugins` variable to enable using the hotio plugins image (ghcr.io/hotio/lidarr:pr-plugins) instead of the default linuxserver image
 
-## [1.0.6] - 2026-01-17
+## [1.0.6] = 2026-01-17
 - Fixed paths to prevent overlapping mounts
 
 ## [1.0.5] - 2026-01-17

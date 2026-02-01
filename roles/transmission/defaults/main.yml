@@ -7,3 +7,6 @@ transmission_tz: "America/Los_Angeles"
 transmission_env_file: "{{ transmission_folder }}/.env"
 transmission_memory: "1g"
 transmission_memory_swap: "1g"
+
+# Docker network (use custom network for container name resolution)
+transmission_networks: []

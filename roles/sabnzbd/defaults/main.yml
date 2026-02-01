@@ -5,3 +5,6 @@ sabnzbd_port: 8080
 sabnzbd_tz: "America/Los_Angeles"
 sabnzbd_memory: "1g"
 sabnzbd_memory_swap: "1g"
+
+# Docker network (use custom network for container name resolution)
+sabnzbd_networks: []

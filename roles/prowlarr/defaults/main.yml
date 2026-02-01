@@ -4,3 +4,6 @@ prowlarr_folder: /etc/prowlarr
 prowlarr_tz: "America/Los_Angeles"
 prowlarr_memory: "1g"
 prowlarr_memory_swap: "1g"
+
+# Docker network (use custom network for container name resolution)
+prowlarr_networks: []

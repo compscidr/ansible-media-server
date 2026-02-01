@@ -9,47 +9,23 @@
     owner: root
     group: root
 
-- name: Deploy plex without devices
+- name: Set Plex devices list
   tags: plex
-  become: true
-  community.docker.docker_container:
-    name: plex
-    image: lscr.io/linuxserver/plex:latest
-    pull: true
-    network_mode: host
-    ports:
-      - "{{ plex_port }}:32400"
-      - "{{ plex_dlna_port }}:1900/udp"
-      - "{{ plex_bonjour_port }}:5353/udp"
-      - "{{ plex_roku_port }}:8324"
-      - "{{ plex_gdm_port1 }}:32410/udp"
-      - "{{ plex_gdm_port2 }}:32412/udp"
-      - "{{ plex_gdm_port3 }}:32413/udp"
-      - "{{ plex_gdm_port4 }}:32414/udp"
-      - "{{ plex_dlna_server_port }}:32469"
-    volumes:
-      - "{{ plex_folder }}:/config:rw"
-      - "{{ plex_tv_folder }}:/tv:rw"
-      - "{{ plex_movies_folder }}:/movies:rw"
-      - "{{ plex_music_folder }}:/music:rw"
-    env:
-      TZ: "{{ plex_tz }}"
-      PUID: "{{ media_user_uid }}"
-      PGID: "{{ media_user_gid }}"
-      PLEX_CLAIM: "{{ plex_claim }}"
-    restart_policy: unless-stopped
-    memory: "{{ plex_memory }}"
-    memory_swap: "{{ plex_memory_swap }}"
-  when: (not plex_dvb_devices) and (not plex_dri_devices)
+  ansible.builtin.set_fact:
+    plex_devices: >-
+      {{
+        (plex_dri_devices | ternary(['/dev/dri:/dev/dri'], [])) +
+        (plex_dvb_devices | ternary(['/dev/dvb:/dev/dvb'], []))
+      }}
 
-- name: Deploy plex with dvb devices
+- name: Deploy plex
   tags: plex
   become: true
   community.docker.docker_container:
     name: plex
     image: lscr.io/linuxserver/plex:latest
     pull: true
-    network_mode: host
+    network_mode: "{{ plex_network_mode }}"
     ports:
       - "{{ plex_port }}:32400"
       - "{{ plex_dlna_port }}:1900/udp"
@@ -65,85 +41,13 @@
       - "{{ plex_tv_folder }}:/tv:rw"
       - "{{ plex_movies_folder }}:/movies:rw"
       - "{{ plex_music_folder }}:/music:rw"
-    devices:
-      - /dev/dvb:/dev/dvb
+    devices: "{{ plex_devices if plex_devices | length > 0 else omit }}"
     env:
       TZ: "{{ plex_tz }}"
       PUID: "{{ media_user_uid }}"
       PGID: "{{ media_user_gid }}"
       PLEX_CLAIM: "{{ plex_claim }}"
+    networks: "{{ plex_networks if (plex_network_mode == 'bridge' and plex_networks | length > 0) else omit }}"
     restart_policy: unless-stopped
     memory: "{{ plex_memory }}"
     memory_swap: "{{ plex_memory_swap }}"
-  when: plex_dvb_devices and (not plex_dri_devices)
-
-- name: Deploy plex with dri devices
-  tags: plex
-  become: true
-  community.docker.docker_container:
-    name: plex
-    image: lscr.io/linuxserver/plex:latest
-    pull: true
-    network_mode: host
-    ports:
-      - "{{ plex_port }}:32400"
-      - "{{ plex_dlna_port }}:1900/udp"
-      - "{{ plex_bonjour_port }}:5353/udp"
-      - "{{ plex_roku_port }}:8324"
-      - "{{ plex_gdm_port1 }}:32410/udp"
-      - "{{ plex_gdm_port2 }}:32412/udp"
-      - "{{ plex_gdm_port3 }}:32413/udp"
-      - "{{ plex_gdm_port4 }}:32414/udp"
-      - "{{ plex_dlna_server_port }}:32469"
-    volumes:
-      - "{{ plex_folder }}:/config:rw"
-      - "{{ plex_tv_folder }}:/tv:rw"
-      - "{{ plex_movies_folder }}:/movies:rw"
-      - "{{ plex_music_folder }}:/music:rw"
-    devices:
-      - /dev/dri:/dev/dri
-    env:
-      TZ: "{{ plex_tz }}"
-      PUID: "{{ media_user_uid }}"
-      PGID: "{{ media_user_gid }}"
-      PLEX_CLAIM: "{{ plex_claim }}"
-    restart_policy: unless-stopped
-    memory: "{{ plex_memory }}"
-    memory_swap: "{{ plex_memory_swap }}"
-  when: (not plex_dvb_devices) and plex_dri_devices
-
-- name: Deploy plex with dri and dvb devices
-  tags: plex
-  become: true
-  community.docker.docker_container:
-    name: plex
-    image: lscr.io/linuxserver/plex:latest
-    pull: true
-    network_mode: host
-    ports:
-      - "{{ plex_port }}:32400"
-      - "{{ plex_dlna_port }}:1900/udp"
-      - "{{ plex_bonjour_port }}:5353/udp"
-      - "{{ plex_roku_port }}:8324"
-      - "{{ plex_gdm_port1 }}:32410/udp"
-      - "{{ plex_gdm_port2 }}:32412/udp"
-      - "{{ plex_gdm_port3 }}:32413/udp"
-      - "{{ plex_gdm_port4 }}:32414/udp"
-      - "{{ plex_dlna_server_port }}:32469"
-    volumes:
-      - "{{ plex_folder }}:/config:rw"
-      - "{{ plex_tv_folder }}:/tv:rw"
-      - "{{ plex_movies_folder }}:/movies:rw"
-      - "{{ plex_music_folder }}:/music:rw"
-    devices:
-      - /dev/dri:/dev/dri
-      - /dev/dvb:/dev/dvb
-    env:
-      TZ: "{{ plex_tz }}"
-      PUID: "{{ media_user_uid }}"
-      PGID: "{{ media_user_gid }}"
-      PLEX_CLAIM: "{{ plex_claim }}"
-    restart_policy: unless-stopped
-    memory: "{{ plex_memory }}"
-    memory_swap: "{{ plex_memory_swap }}"
-  when: plex_dvb_devices and plex_dri_devices

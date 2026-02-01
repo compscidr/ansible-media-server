@@ -11,3 +11,6 @@ sonarr_port: 8989
 sonarr_tz: "America/Los_Angeles"
 sonarr_memory: "1g"
 sonarr_memory_swap: "1g"
+
+# Docker network (use custom network for container name resolution)
+sonarr_networks: []
