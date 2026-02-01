@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.1] - 2026-01-31
+
+### Fixed
+- **media_storage**: Added both `downloads/complete` (sabnzbd convention) and `downloads/completed` (transmission default) directories
+- **media_storage**: Added `movies`, `tv`, `music` subdirectories under both complete/completed for Radarr/Sonarr/Lidarr
+
 ## [1.2.0] - 2026-01-31
 
 ### Added
