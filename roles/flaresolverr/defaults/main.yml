@@ -5,4 +5,4 @@ flaresolverr_tz: "America/Los_Angeles"
 flaresolverr_memory: "1g"
 
 # Docker network (use custom network for container name resolution)
-flaresolverr_networks: []
+flaresolverr_networks: "{{ [{'name': media_storage_network_name}] if media_storage_network_enabled | default(false) else [] }}"

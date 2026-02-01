@@ -6,4 +6,4 @@ jackett_tz: "America/Los_Angeles"
 jackett_memory: "1g"
 
 # Docker network (use custom network for container name resolution)
-jackett_networks: []
+jackett_networks: "{{ [{'name': media_storage_network_name}] if media_storage_network_enabled | default(false) else [] }}"

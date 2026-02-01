@@ -13,4 +13,4 @@ sonarr_memory: "1g"
 sonarr_memory_swap: "1g"
 
 # Docker network (use custom network for container name resolution)
-sonarr_networks: []
+sonarr_networks: "{{ [{'name': media_storage_network_name}] if media_storage_network_enabled | default(false) else [] }}"

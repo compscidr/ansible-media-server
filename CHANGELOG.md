@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.3.0] - 2026-01-31
+
+### Added
+- **Shared Docker network**: Containers can now reach each other by name
+  - Set `media_storage_network_enabled: true` to enable
+  - Creates a `media` network (configurable via `media_storage_network_name`)
+  - All roles auto-join the network when enabled
+  - Allows `http://sonarr:8989`, `http://radarr:7878`, etc.
+
 ## [1.2.1] - 2026-01-31
 
 ### Fixed
