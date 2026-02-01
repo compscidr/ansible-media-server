@@ -1,0 +1,44 @@
+---
+- name: Ensure docker is installed on the target system
+  tags: docker
+  ansible.builtin.include_role:
+    name: nickjj.docker
+    apply:
+      become: true
+  when: slskd_install_docker
+
+- name: Create slskd Directories
+  tags: slskd
+  become: true
+  ansible.builtin.file:
+    path: "{{ slskd_folder }}"
+    state: directory
+    mode: "755"
+    owner: "{{ media_user_uid }}"
+    group: "{{ media_user_gid }}"
+
+- name: Deploy slskd
+  tags: slskd
+  become: true
+  community.docker.docker_container:
+    name: slskd
+    image: slskd/slskd:latest
+    pull: true
+    user: "{{ media_user_uid }}:{{ media_user_gid }}"
+    ports:
+      - "{{ slskd_port }}:5030"
+      - "{{ slskd_https_port }}:5031"
+      - "{{ slskd_soulseek_port }}:50300"
+    volumes:
+      - "{{ slskd_music_folder }}:/music:rw"
+      - "{{ slskd_downloads_folder }}:/downloads:rw"
+      - "{{ slskd_incomplete_folder }}:/incomplete:rw"
+      - "{{ slskd_folder }}:/app:rw"
+    env:
+      TZ: "{{ slskd_tz }}"
+      PUID: "{{ media_user_uid }}"
+      PGID: "{{ media_user_gid }}"
+    networks: "{{ slskd_networks if slskd_networks | length > 0 else omit }}"
+    restart_policy: unless-stopped
+    memory: "{{ slskd_memory }}"
+    memory_swap: "{{ slskd_memory_swap }}"

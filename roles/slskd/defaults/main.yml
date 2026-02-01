@@ -1,0 +1,18 @@
+---
+# Docker installation control
+slskd_install_docker: false
+
+# slskd configuration
+slskd_folder: /etc/slskd
+slskd_music_folder: "{{ media_storage_base_path }}/music"
+slskd_downloads_folder: "{{ media_storage_base_path }}/downloads/complete/music"
+slskd_incomplete_folder: "{{ media_storage_base_path }}/downloads/incomplete"
+slskd_port: 5030
+slskd_https_port: 5031
+slskd_soulseek_port: 50300
+slskd_tz: "America/Los_Angeles"
+slskd_memory: "1g"
+slskd_memory_swap: "1g"
+
+# Docker network (use custom network for container name resolution)
+slskd_networks: []
