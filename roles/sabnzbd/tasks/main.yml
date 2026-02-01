@@ -30,3 +30,20 @@
     restart_policy: unless-stopped
     memory: "{{ sabnzbd_memory }}"
     memory_swap: "{{ sabnzbd_memory_swap }}"
+
+- name: Wait for sabnzbd config file to be created
+  tags: sabnzbd
+  become: true
+  ansible.builtin.wait_for:
+    path: "{{ sabnzbd_folder }}/sabnzbd.ini"
+    state: present
+    timeout: 60
+
+- name: Configure sabnzbd host whitelist for container networking
+  tags: sabnzbd
+  become: true
+  ansible.builtin.lineinfile:
+    path: "{{ sabnzbd_folder }}/sabnzbd.ini"
+    regexp: '^host_whitelist\s*='
+    line: "host_whitelist = {{ sabnzbd_host_whitelist }}"
+  notify: restart sabnzbd
