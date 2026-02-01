@@ -137,3 +137,31 @@
           - transmission_info.container.State.Status == "running"
         fail_msg: "transmission container is not running"
       when: test_role == "" or test_role == "transmission"
+
+    - name: Check if slskd container is running
+      community.docker.docker_container_info:
+        name: slskd
+      register: slskd_info
+      when: test_role == "" or test_role == "slskd"
+
+    - name: Verify slskd container is running
+      ansible.builtin.assert:
+        that:
+          - slskd_info.exists
+          - slskd_info.container.State.Status == "running"
+        fail_msg: "slskd container is not running"
+      when: test_role == "" or test_role == "slskd"
+
+    - name: Check if soularr container is running
+      community.docker.docker_container_info:
+        name: soularr
+      register: soularr_info
+      when: test_role == "" or test_role == "soularr"
+
+    - name: Verify soularr container is running
+      ansible.builtin.assert:
+        that:
+          - soularr_info.exists
+          - soularr_info.container.State.Status == "running"
+        fail_msg: "soularr container is not running"
+      when: test_role == "" or test_role == "soularr"

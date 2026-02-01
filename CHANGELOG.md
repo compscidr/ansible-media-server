@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.0] - 2026-01-31
+
+### Added
+- **New `slskd` role**: Installs and configures the slskd container (Soulseek client)
+  - Web-based interface for Soulseek peer-to-peer music sharing
+  - Configurable ports for web UI (5030/5031) and Soulseek (50300)
+  - Integrates with media_storage for consistent paths and permissions
+
+- **New `soularr` role**: Installs and configures the soularr container
+  - Bridges slskd and Lidarr for automated music downloads
+  - Monitors Lidarr's wanted list and searches slskd automatically
+
 ## [1.1.0] - 2026-01-31
 
 ### Added

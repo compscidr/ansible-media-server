@@ -55,3 +55,13 @@
       ansible.builtin.include_role:
         name: "transmission"
       when: test_role == "" or test_role == "transmission"
+
+    - name: "Include slskd role"
+      ansible.builtin.include_role:
+        name: "slskd"
+      when: test_role == "" or test_role == "slskd"
+
+    - name: "Include soularr role"
+      ansible.builtin.include_role:
+        name: "soularr"
+      when: test_role == "" or test_role == "soularr"

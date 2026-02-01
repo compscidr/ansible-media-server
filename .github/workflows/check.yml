@@ -37,6 +37,8 @@ jobs:
           - sabnzbd
           - flaresolverr
           - transmission
+          - slskd
+          - soularr
     steps:
       - uses: actions/checkout@v6
       

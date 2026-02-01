@@ -1,0 +1,34 @@
+---
+- name: Ensure docker is installed on the target system
+  tags: docker
+  ansible.builtin.include_role:
+    name: nickjj.docker
+    apply:
+      become: true
+  when: soularr_install_docker
+
+- name: Create soularr Directories
+  tags: soularr
+  become: true
+  ansible.builtin.file:
+    path: "{{ soularr_folder }}"
+    state: directory
+    mode: "755"
+    owner: "{{ media_user_uid }}"
+    group: "{{ media_user_gid }}"
+
+- name: Deploy soularr
+  tags: soularr
+  become: true
+  community.docker.docker_container:
+    name: soularr
+    image: mrusse08/soularr:latest
+    pull: true
+    user: "{{ media_user_uid }}:{{ media_user_gid }}"
+    volumes:
+      - "{{ soularr_downloads_folder }}:/downloads:rw"
+      - "{{ soularr_folder }}:/data:rw"
+    networks: "{{ soularr_networks if soularr_networks | length > 0 else omit }}"
+    restart_policy: unless-stopped
+    memory: "{{ soularr_memory }}"
+    memory_swap: "{{ soularr_memory_swap }}"
