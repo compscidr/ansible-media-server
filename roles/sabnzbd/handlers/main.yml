@@ -1,0 +1,7 @@
+---
+- name: restart sabnzbd
+  become: true
+  community.docker.docker_container:
+    name: sabnzbd
+    state: started
+    restart: true

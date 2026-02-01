@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.2] - 2026-02-12
+
+### Added
+- **sabnzbd**: Auto-configure `host_whitelist` for container networking
+  - Adds `sabnzbd_host_whitelist` variable (default: `sabnzbd, sonarr, radarr, lidarr, prowlarr`)
+  - Fixes 403 Forbidden errors when *arr apps connect via container hostname
+  - Automatically restarts sabnzbd if whitelist changes
+
 ## [1.3.1] - 2026-02-12
 
 ### Added

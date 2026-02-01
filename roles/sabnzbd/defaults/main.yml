@@ -8,3 +8,7 @@ sabnzbd_memory_swap: "1g"
 
 # Docker network (use custom network for container name resolution)
 sabnzbd_networks: "{{ [{'name': media_storage_network_name}] if media_storage_network_enabled | default(false) else [] }}"
+
+# Host whitelist for API access (required when using container names)
+# Add container hostnames that will connect to sabnzbd
+sabnzbd_host_whitelist: "sabnzbd, sonarr, radarr, lidarr, prowlarr"
