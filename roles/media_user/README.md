@@ -67,11 +67,11 @@ Most commonly, you won't include this role directly. It's automatically included
 
 ## Role Types
 
-- **Roles that need media folders** (plex, sonarr, radarr, lidarr, transmission, sabnzbd):
+- **Roles that need media folders** (plex, sonarr, radarr, lidarr, transmission, sabnzbd, jackett):
   - Depend on `media_storage` (which depends on `media_user`)
   - Get UID/GID detection + folder creation
 
-- **Roles that don't need media folders** (ombi, prowlarr, jackett):
+- **Roles that don't need media folders** (ombi, prowlarr):
   - Depend on `media_user` only
   - Get UID/GID detection without folder creation
 

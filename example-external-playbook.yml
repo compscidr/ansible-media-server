@@ -24,10 +24,8 @@
     sonarr_folder: /opt/sonarr
     radarr_folder: /opt/radarr
 
-    # Storage paths (will be created automatically by media_storage role)
-    lidarr_music_folder: /storage/music
-    sonarr_tv_folder: /storage/tv
-    radarr_movies_folder: /storage/movies
+    # Note: Storage paths (lidarr_music_folder, sonarr_tv_folder, radarr_movies_folder)
+    # are derived from media_storage_base_path automatically, no need to specify them
 
   roles:
     # Install media management services

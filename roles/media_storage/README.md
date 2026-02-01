@@ -77,10 +77,10 @@ Most commonly, you won't include this role directly. Instead, it will be automat
 5. This ensures all containers run with the same user permissions and can access shared directories
 
 **Role dependency structure:**
-- **Media roles with storage needs**: plex, sonarr, radarr, lidarr, transmission, sabnzbd
+- **Media roles with storage needs**: plex, sonarr, radarr, lidarr, transmission, sabnzbd, jackett
   - Depend on `media_storage` → which depends on `media_user`
   - Get UID/GID detection + folder creation
-- **Media roles without storage needs**: ombi, prowlarr, jackett
+- **Media roles without storage needs**: ombi, prowlarr
   - Depend on `media_user` directly
   - Get UID/GID detection only
 

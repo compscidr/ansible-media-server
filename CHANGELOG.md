@@ -24,8 +24,8 @@
 
 ### Changed
 - **All media roles**: Now use automatic UID/GID detection
-  - Roles with storage needs (plex, sonarr, radarr, lidarr, transmission, sabnzbd) depend on `media_storage`
-  - Roles without storage needs (ombi, prowlarr, jackett) depend on `media_user` only
+  - Roles with storage needs (plex, sonarr, radarr, lidarr, transmission, sabnzbd, jackett) depend on `media_storage`
+  - Roles without storage needs (ombi, prowlarr) depend on `media_user` only
   - All roles use `media_user_uid` and `media_user_gid` for container PUID/PGID
   - Removed hardcoded UID/GID defaults from individual role defaults
 
