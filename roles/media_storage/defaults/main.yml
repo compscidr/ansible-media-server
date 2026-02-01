@@ -3,15 +3,28 @@
 # This role creates media directories with proper ownership
 # Note: This role depends on media_user which detects UID/GID
 
+# Shared Docker network for container name resolution
+# Enable this to allow containers to reach each other by name
+media_network_enabled: false
+media_network_name: "media"
+
 # Base storage path - can be customized per deployment
 media_storage_base_path: /storage
 
 # Media directories to create
+# Note: transmission-openvpn uses /data/completed by default
+#       sabnzbd is user-configurable, often uses /downloads/complete
 media_storage_directories:
   - "{{ media_storage_base_path }}"
   - "{{ media_storage_base_path }}/downloads"
   - "{{ media_storage_base_path }}/downloads/complete"
+  - "{{ media_storage_base_path }}/downloads/complete/movies"
+  - "{{ media_storage_base_path }}/downloads/complete/tv"
   - "{{ media_storage_base_path }}/downloads/complete/music"
+  - "{{ media_storage_base_path }}/downloads/completed"
+  - "{{ media_storage_base_path }}/downloads/completed/movies"
+  - "{{ media_storage_base_path }}/downloads/completed/tv"
+  - "{{ media_storage_base_path }}/downloads/completed/music"
   - "{{ media_storage_base_path }}/downloads/incomplete"
   - "{{ media_storage_base_path }}/tv"
   - "{{ media_storage_base_path }}/movies"

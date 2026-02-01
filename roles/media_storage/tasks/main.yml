@@ -1,4 +1,12 @@
 ---
+- name: Create media network for container name resolution
+  tags: plex, transmission, sabnzbd, sonarr, radarr, lidarr, prowlarr, ombi, jackett, flaresolverr, slskd, soularr
+  become: true
+  community.docker.docker_network:
+    name: "{{ media_network_name }}"
+    state: present
+  when: media_network_enabled
+
 - name: Create media folders
   tags: plex, transmission, sabnzbd, sonarr, radarr, lidarr
   become: true
