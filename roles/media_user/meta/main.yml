@@ -1,10 +1,9 @@
 ---
-dependencies:
-  - role: media_storage
+dependencies: []
 galaxy_info:
   author: Jason Ernst
-  role_name: plex
-  description: Installs and configures the plex container
+  role_name: media_user
+  description: Detects UID/GID for media server user/group
   company: ""
   license: GPLv3
   min_ansible_version: "2.4"
@@ -16,9 +15,6 @@ galaxy_info:
         - jammy # 22.04 LTS
         - noble # 24.04 LTS
   galaxy_tags:
-    - github
-    - actions
-    - runner
-    - docker
-    - hosted
-    - plex
+    - media
+    - user
+    - permissions

@@ -20,11 +20,12 @@
       - "{{ ombi_folder }}:/config:rw"
     env:
       TZ: "{{ ombi_tz }}"
-      PUID: "{{ ombi_pid }}"
-      PGID: "{{ ombi_gid }}"
+      PUID: "{{ media_user_uid }}"
+      PGID: "{{ media_user_gid }}"
       VIRTUAL_HOST: "{{ ombi_virtual_host }}"
       VIRTUAL_PORT: "{{ ombi_virtual_port }}"
       LETSENCRYPT_HOST: "{{ ombi_letsencrypt_host }}"
       LETSENCRYPT_EMAIL: "{{ ombi_letsencrypt_email }}"
+    networks: "{{ ombi_networks if ombi_networks | length > 0 else omit }}"
     restart_policy: unless-stopped
     memory: "{{ ombi_memory }}"

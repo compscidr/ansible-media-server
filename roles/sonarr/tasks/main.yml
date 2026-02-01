@@ -33,8 +33,9 @@
       - "{{ sonarr_folder }}:/config:rw"
     env:
       TZ: "{{ sonarr_tz }}"
-      PUID: "{{ sonarr_pid }}"
-      PGID: "{{ sonarr_gid }}"
+      PUID: "{{ media_user_uid }}"
+      PGID: "{{ media_user_gid }}"
+    networks: "{{ sonarr_networks if sonarr_networks | length > 0 else omit }}"
     restart_policy: unless-stopped
     memory: "{{ sonarr_memory }}"
     memory_swap: "{{ sonarr_memory_swap }}"

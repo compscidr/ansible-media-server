@@ -22,8 +22,9 @@
       - "{{ prowlarr_folder }}:/config:rw"
     env:
       TZ: "{{ prowlarr_tz }}"
-      PUID: "{{ prowlarr_pid }}"
-      PGID: "{{ prowlarr_gid }}"
+      PUID: "{{ media_user_uid }}"
+      PGID: "{{ media_user_gid }}"
+    networks: "{{ prowlarr_networks if prowlarr_networks | length > 0 else omit }}"
     restart_policy: unless-stopped
     memory: "{{ prowlarr_memory }}"
     memory_swap: "{{ prowlarr_memory_swap }}"

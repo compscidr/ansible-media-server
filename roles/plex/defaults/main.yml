@@ -9,14 +9,18 @@ plex_gdm_port3: 32413
 plex_gdm_port4: 32414
 plex_dlna_server_port: 32469
 plex_folder: /etc/plex
-plex_tv_folder: /storage/tv
-plex_movies_folder: /storage/movies
-plex_music_folder: /storage/music
+plex_tv_folder: "{{ media_storage_base_path }}/tv"
+plex_movies_folder: "{{ media_storage_base_path }}/movies"
+plex_music_folder: "{{ media_storage_base_path }}/music"
 plex_tz: "America/Los_Angeles"
-plex_pid: "1000"
-plex_gid: "1000"
 plex_dvb_devices: false
 plex_dri_devices: false
 plex_claim: ""
 plex_memory: "1g"
 plex_memory_swap: "1g"
+
+# Docker networking
+# Set to "bridge" for container name resolution, "host" for DLNA/discovery
+plex_network_mode: "bridge"
+# Custom networks (only used when plex_network_mode is "bridge")
+plex_networks: []

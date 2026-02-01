@@ -11,5 +11,6 @@
     env:
       CAPTCHA_SOLVER: "{{ flaresolverr_captcha_solver }}"
       TZ: "{{ flaresolverr_tz }}"
+    networks: "{{ flaresolverr_networks if flaresolverr_networks | length > 0 else omit }}"
     restart_policy: unless-stopped
     memory: "{{ flaresolverr_memory }}"

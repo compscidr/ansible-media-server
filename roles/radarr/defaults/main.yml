@@ -4,12 +4,13 @@ radarr_install_docker: false
 
 # Radarr configuration
 radarr_folder: /etc/radarr
-radarr_movies_folder: /storage/movies
-radarr_transmission_downloads_folder: /storage/downloads
-radarr_sabnzbd_downloads_folder: /storage/downloads
+radarr_movies_folder: "{{ media_storage_base_path }}/movies"
+radarr_transmission_downloads_folder: "{{ media_storage_base_path }}/downloads"
+radarr_sabnzbd_downloads_folder: "{{ media_storage_base_path }}/downloads"
 radarr_port: 7878
 radarr_tz: "America/Los_Angeles"
-radarr_pid: "1000"
-radarr_gid: "1000"
 radarr_memory: "1g"
 radarr_memory_swap: "1g"
+
+# Docker network (use custom network for container name resolution)
+radarr_networks: []

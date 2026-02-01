@@ -33,8 +33,9 @@
       - "{{ lidarr_folder }}:/config:rw"
     env:
       TZ: "{{ lidarr_tz }}"
-      PUID: "{{ lidarr_pid }}"
-      PGID: "{{ lidarr_gid }}"
+      PUID: "{{ media_user_uid }}"
+      PGID: "{{ media_user_gid }}"
+    networks: "{{ lidarr_networks if lidarr_networks | length > 0 else omit }}"
     restart_policy: unless-stopped
     memory: "{{ lidarr_memory }}"
     memory_swap: "{{ lidarr_memory_swap }}"

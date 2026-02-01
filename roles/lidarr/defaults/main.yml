@@ -5,12 +5,13 @@ lidarr_install_docker: false
 # Lidarr configuration
 lidarr_plugins: false
 lidarr_folder: /etc/lidarr
-lidarr_music_folder: /storage/music
-lidarr_transmission_downloads_folder: /storage/downloads
-lidarr_sabnzbd_downloads_folder: /storage/downloads
+lidarr_music_folder: "{{ media_storage_base_path }}/music"
+lidarr_transmission_downloads_folder: "{{ media_storage_base_path }}/downloads"
+lidarr_sabnzbd_downloads_folder: "{{ media_storage_base_path }}/downloads"
 lidarr_port: 8686
 lidarr_tz: "America/Los_Angeles"
-lidarr_pid: "1000"
-lidarr_gid: "1000"
 lidarr_memory: "1g"
 lidarr_memory_swap: "1g"
+
+# Docker network (use custom network for container name resolution)
+lidarr_networks: []

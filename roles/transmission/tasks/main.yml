@@ -50,6 +50,7 @@
     ports:
       - "{{ transmission_port }}:9091"
       - "{{ transmission_peer_port }}:51413"
+    networks: "{{ transmission_networks if transmission_networks | length > 0 else omit }}"
     restart_policy: unless-stopped
     devices:
       - /dev/net/tun
@@ -60,8 +61,8 @@
       - "{{ transmission_folder }}:/config"
     env:
       TZ: "{{ transmission_tz }}"
-      PUID: "{{ transmission_pid }}"
-      PGID: "{{ transmission_gid }}"
+      PUID: "{{ media_user_uid }}"
+      PGID: "{{ media_user_gid }}"
     env_file: "{{ transmission_env_file }}"
     memory: "{{ transmission_memory }}"
     memory_swap: "{{ transmission_memory_swap }}"
