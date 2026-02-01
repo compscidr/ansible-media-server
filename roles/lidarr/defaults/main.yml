@@ -14,3 +14,6 @@ lidarr_pid: "1000"
 lidarr_gid: "1000"
 lidarr_memory: "1g"
 lidarr_memory_swap: "1g"
+
+# Docker network (use custom network for container name resolution)
+lidarr_networks: []

@@ -26,5 +26,6 @@
       PUID: "{{ jackett_pid }}"
       PGID: "{{ jackett_gid }}"
       AUTO_UPDATE: "true"
+    networks: "{{ jackett_networks if jackett_networks | length > 0 else omit }}"
     restart_policy: unless-stopped
     memory: "{{ jackett_memory }}"

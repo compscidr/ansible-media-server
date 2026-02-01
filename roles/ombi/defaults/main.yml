@@ -9,3 +9,6 @@ ombi_virtual_port: "{{ ombi_port | string }}"
 ombi_letsencrypt_host: "{{ ombi_virtual_host }}"
 ombi_letsencrypt_email: ""
 ombi_memory: "1g"
+
+# Docker network (use custom network for container name resolution)
+ombi_networks: []

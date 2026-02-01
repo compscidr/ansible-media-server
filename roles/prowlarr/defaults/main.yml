@@ -6,3 +6,6 @@ prowlarr_pid: "1000"
 prowlarr_gid: "1000"
 prowlarr_memory: "1g"
 prowlarr_memory_swap: "1g"
+
+# Docker network (use custom network for container name resolution)
+prowlarr_networks: []

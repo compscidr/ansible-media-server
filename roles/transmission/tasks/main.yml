@@ -50,6 +50,7 @@
     ports:
       - "{{ transmission_port }}:9091"
       - "{{ transmission_peer_port }}:51413"
+    networks: "{{ transmission_networks if transmission_networks | length > 0 else omit }}"
     restart_policy: unless-stopped
     devices:
       - /dev/net/tun

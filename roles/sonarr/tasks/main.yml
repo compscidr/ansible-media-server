@@ -35,6 +35,7 @@
       TZ: "{{ sonarr_tz }}"
       PUID: "{{ sonarr_pid }}"
       PGID: "{{ sonarr_gid }}"
+    networks: "{{ sonarr_networks if sonarr_networks | length > 0 else omit }}"
     restart_policy: unless-stopped
     memory: "{{ sonarr_memory }}"
     memory_swap: "{{ sonarr_memory_swap }}"

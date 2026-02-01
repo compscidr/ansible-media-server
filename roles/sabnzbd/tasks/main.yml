@@ -26,6 +26,7 @@
       PUID: "{{ sabnzbd_pid }}"
       PGID: "{{ sabnzbd_gid }}"
       AUTO_UPDATE: "true"
+    networks: "{{ sabnzbd_networks if sabnzbd_networks | length > 0 else omit }}"
     restart_policy: unless-stopped
     memory: "{{ sabnzbd_memory }}"
     memory_swap: "{{ sabnzbd_memory_swap }}"

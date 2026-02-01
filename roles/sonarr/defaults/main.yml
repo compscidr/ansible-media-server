@@ -13,3 +13,6 @@ sonarr_pid: "1000"
 sonarr_gid: "1000"
 sonarr_memory: "1g"
 sonarr_memory_swap: "1g"
+
+# Docker network (use custom network for container name resolution)
+sonarr_networks: []

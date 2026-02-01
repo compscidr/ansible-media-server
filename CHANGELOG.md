@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.1.0] - 2026-01-31
+
+### Added
+- **All roles**: Added Docker network support for container name resolution
+  - Added `<role>_networks` variable to all roles (e.g., `sonarr_networks`, `radarr_networks`)
+  - Allows containers to be connected to custom Docker networks
+  - Enables containers to communicate by name instead of IP address
+
+- **Plex**: Added `plex_network_mode` variable (default: "bridge")
+  - Set to "host" for DLNA/UPnP discovery features
+  - Bridge mode allows container name resolution with custom networks
+
+### Changed
+- **Plex**: Simplified role from 4 duplicate tasks to 1 dynamic task
+  - Devices (dri/dvb) now handled dynamically instead of separate task variants
+
 ## [1.0.7] - 2026-01-17
 - **Lidarr**: Added `lidarr_plugins` variable to enable using the hotio plugins image (ghcr.io/hotio/lidarr:pr-plugins) instead of the default linuxserver image
 

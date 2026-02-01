@@ -13,3 +13,6 @@ radarr_pid: "1000"
 radarr_gid: "1000"
 radarr_memory: "1g"
 radarr_memory_swap: "1g"
+
+# Docker network (use custom network for container name resolution)
+radarr_networks: []

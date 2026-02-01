@@ -6,3 +6,6 @@ jackett_tz: "America/Los_Angeles"
 jackett_pid: "1000"
 jackett_gid: "1000"
 jackett_memory: "1g"
+
+# Docker network (use custom network for container name resolution)
+jackett_networks: []
