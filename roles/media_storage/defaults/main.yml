@@ -6,6 +6,12 @@
 # Base storage path - can be customized per deployment
 media_storage_base_path: /storage
 
+# Shared Docker network for container name resolution
+# Set to true to create a network and allow containers to reach each other by name
+# (e.g., http://sonarr:8989, http://radarr:7878)
+media_storage_network_enabled: false
+media_storage_network_name: "media"
+
 # Media directories to create
 # Note: transmission-openvpn uses /data/completed by default
 #       sabnzbd is user-configurable, often uses /downloads/complete

@@ -23,4 +23,4 @@ plex_memory_swap: "1g"
 # Set to "bridge" for container name resolution, "host" for DLNA/discovery
 plex_network_mode: "bridge"
 # Custom networks (only used when plex_network_mode is "bridge")
-plex_networks: []
+plex_networks: "{{ [{'name': media_storage_network_name}] if media_storage_network_enabled | default(false) else [] }}"
