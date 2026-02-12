@@ -18,6 +18,7 @@ plex_dri_devices: false
 plex_claim: ""
 plex_memory: "1g"
 plex_memory_swap: "1g"
+plex_shm_size: "2g"
 
 # Docker networking
 # Set to "bridge" for container name resolution, "host" for DLNA/discovery
