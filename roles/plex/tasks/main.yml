@@ -51,3 +51,4 @@
     restart_policy: unless-stopped
     memory: "{{ plex_memory }}"
     memory_swap: "{{ plex_memory_swap }}"
+    shm_size: "{{ plex_shm_size }}"

@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1] - 2026-02-12
+
+### Added
+- **Plex**: Added `plex_shm_size` variable (default: "2g") to configure container shared memory
+  - Docker defaults `/dev/shm` to 64MB which is insufficient for Plex transcoding
+  - Prevents crashes and `.dmp` crash report generation during transcoding
+
 ## [1.3.0] - 2026-01-31
 
 ### Added
