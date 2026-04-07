@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.0] - 2026-04-06
+
+### Added
+- **Radarr, Sonarr, Plex**: Added reverse proxy / SSL support via nginx-proxy and letsencrypt companion
+  - Added `*_virtual_host`, `*_virtual_port`, `*_letsencrypt_host`, and `*_letsencrypt_email` variables
+  - Matches the existing pattern used by the ombi role
+  - Defaults to empty strings for full backwards compatibility
+
 ## [1.3.2] - 2026-02-12
 
 ### Added
