@@ -47,6 +47,10 @@
       PUID: "{{ media_user_uid }}"
       PGID: "{{ media_user_gid }}"
       PLEX_CLAIM: "{{ plex_claim }}"
+      VIRTUAL_HOST: "{{ plex_virtual_host }}"
+      VIRTUAL_PORT: "{{ plex_virtual_port }}"
+      LETSENCRYPT_HOST: "{{ plex_letsencrypt_host }}"
+      LETSENCRYPT_EMAIL: "{{ plex_letsencrypt_email }}"
     networks: "{{ plex_networks if (plex_network_mode == 'bridge' and plex_networks | length > 0) else omit }}"
     restart_policy: unless-stopped
     memory: "{{ plex_memory }}"

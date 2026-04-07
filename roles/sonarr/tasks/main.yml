@@ -35,6 +35,10 @@
       TZ: "{{ sonarr_tz }}"
       PUID: "{{ media_user_uid }}"
       PGID: "{{ media_user_gid }}"
+      VIRTUAL_HOST: "{{ sonarr_virtual_host }}"
+      VIRTUAL_PORT: "{{ sonarr_virtual_port }}"
+      LETSENCRYPT_HOST: "{{ sonarr_letsencrypt_host }}"
+      LETSENCRYPT_EMAIL: "{{ sonarr_letsencrypt_email }}"
     networks: "{{ sonarr_networks if sonarr_networks | length > 0 else omit }}"
     restart_policy: unless-stopped
     memory: "{{ sonarr_memory }}"

@@ -20,6 +20,12 @@ plex_memory: "1g"
 plex_memory_swap: "1g"
 plex_shm_size: "2g"
 
+# Reverse proxy / SSL (nginx-proxy + letsencrypt companion)
+plex_virtual_host: ""
+plex_virtual_port: "{{ plex_port | string }}"
+plex_letsencrypt_host: "{{ plex_virtual_host }}"
+plex_letsencrypt_email: ""
+
 # Docker networking
 # Set to "bridge" for container name resolution, "host" for DLNA/discovery
 plex_network_mode: "bridge"

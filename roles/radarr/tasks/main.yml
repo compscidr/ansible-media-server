@@ -35,6 +35,10 @@
       TZ: "{{ radarr_tz }}"
       PUID: "{{ media_user_uid }}"
       PGID: "{{ media_user_gid }}"
+      VIRTUAL_HOST: "{{ radarr_virtual_host }}"
+      VIRTUAL_PORT: "{{ radarr_virtual_port }}"
+      LETSENCRYPT_HOST: "{{ radarr_letsencrypt_host }}"
+      LETSENCRYPT_EMAIL: "{{ radarr_letsencrypt_email }}"
     networks: "{{ radarr_networks if radarr_networks | length > 0 else omit }}"
     restart_policy: unless-stopped
     memory: "{{ radarr_memory }}"

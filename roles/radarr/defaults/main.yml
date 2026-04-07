@@ -12,5 +12,11 @@ radarr_tz: "America/Los_Angeles"
 radarr_memory: "1g"
 radarr_memory_swap: "1g"
 
+# Reverse proxy / SSL (nginx-proxy + letsencrypt companion)
+radarr_virtual_host: ""
+radarr_virtual_port: "{{ radarr_port | string }}"
+radarr_letsencrypt_host: "{{ radarr_virtual_host }}"
+radarr_letsencrypt_email: ""
+
 # Docker network (use custom network for container name resolution)
 radarr_networks: "{{ [{'name': media_storage_network_name}] if media_storage_network_enabled | default(false) else [] }}"
