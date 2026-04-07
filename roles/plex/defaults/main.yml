@@ -22,7 +22,7 @@ plex_shm_size: "2g"
 
 # Reverse proxy / SSL (nginx-proxy + letsencrypt companion)
 plex_virtual_host: ""
-plex_virtual_port: "{{ plex_port | string }}"
+plex_virtual_port: "32400"
 plex_letsencrypt_host: "{{ plex_virtual_host }}"
 plex_letsencrypt_email: ""
 

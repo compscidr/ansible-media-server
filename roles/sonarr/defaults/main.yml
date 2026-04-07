@@ -14,7 +14,7 @@ sonarr_memory_swap: "1g"
 
 # Reverse proxy / SSL (nginx-proxy + letsencrypt companion)
 sonarr_virtual_host: ""
-sonarr_virtual_port: "{{ sonarr_port | string }}"
+sonarr_virtual_port: "8989"
 sonarr_letsencrypt_host: "{{ sonarr_virtual_host }}"
 sonarr_letsencrypt_email: ""
 

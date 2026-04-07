@@ -14,7 +14,7 @@ radarr_memory_swap: "1g"
 
 # Reverse proxy / SSL (nginx-proxy + letsencrypt companion)
 radarr_virtual_host: ""
-radarr_virtual_port: "{{ radarr_port | string }}"
+radarr_virtual_port: "7878"
 radarr_letsencrypt_host: "{{ radarr_virtual_host }}"
 radarr_letsencrypt_email: ""
 
