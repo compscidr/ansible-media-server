@@ -7,3 +7,6 @@ venv
 .ansible/
 **/.ansible/
 *.lock
+
+# claude-mem drops these next to whatever it touched; nothing here reads them
+**/CLAUDE.md

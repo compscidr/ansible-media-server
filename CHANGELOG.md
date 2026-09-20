@@ -3,7 +3,7 @@
 ## [1.5.0] - 2026-09-20
 
 ### Added
-- **All container roles**: `<role>_extra_volumes` (default `[]`), a list of extra
+- **Every role with a bind mount** (all but flaresolverr): `<role>_extra_volumes` (default `[]`), a list of extra
   bind mounts appended to the container's volumes. Lets a data subdirectory of the
   config folder (slskd's `data/`, the *arr `MediaCover/` and `logs/`) live on a
   different filesystem while the config path stays put.
