@@ -56,9 +56,11 @@
       - /dev/net/tun
     capabilities:
       - NET_ADMIN
-    volumes:
-      - "{{ transmission_downloads_folder }}:/data"
-      - "{{ transmission_folder }}:/config"
+    volumes: >-
+      {{ [
+        transmission_downloads_folder ~ ':/data',
+        transmission_folder ~ ':/config',
+      ] + transmission_extra_volumes }}
     env:
       TZ: "{{ transmission_tz }}"
       PUID: "{{ media_user_uid }}"

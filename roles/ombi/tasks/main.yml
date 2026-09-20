@@ -16,8 +16,10 @@
     pull: true
     ports:
       - "{{ ombi_port }}:3579"
-    volumes:
-      - "{{ ombi_folder }}:/config:rw"
+    volumes: >-
+      {{ [
+        ombi_folder ~ ':/config:rw',
+      ] + ombi_extra_volumes }}
     env:
       TZ: "{{ ombi_tz }}"
       PUID: "{{ media_user_uid }}"

@@ -18,8 +18,10 @@
     pull: true
     ports:
       - "{{ prowlarr_port }}:9696"
-    volumes:
-      - "{{ prowlarr_folder }}:/config:rw"
+    volumes: >-
+      {{ [
+        prowlarr_folder ~ ':/config:rw',
+      ] + prowlarr_extra_volumes }}
     env:
       TZ: "{{ prowlarr_tz }}"
       PUID: "{{ media_user_uid }}"

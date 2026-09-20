@@ -7,3 +7,8 @@ prowlarr_memory_swap: "1g"
 
 # Docker network (use custom network for container name resolution)
 prowlarr_networks: "{{ [{'name': media_storage_network_name}] if media_storage_network_enabled | default(false) else [] }}"
+
+# Extra bind mounts appended to the container's volumes, in docker "src:dst[:mode]"
+# form. Lets a subdirectory of prowlarr_folder (a database, an artwork cache, logs) be
+# placed elsewhere without giving up the config path.
+prowlarr_extra_volumes: []

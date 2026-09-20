@@ -25,9 +25,11 @@
     image: mrusse08/soularr:latest
     pull: true
     user: "{{ media_user_uid }}:{{ media_user_gid }}"
-    volumes:
-      - "{{ soularr_downloads_folder }}:/downloads:rw"
-      - "{{ soularr_folder }}:/data:rw"
+    volumes: >-
+      {{ [
+        soularr_downloads_folder ~ ':/downloads:rw',
+        soularr_folder ~ ':/data:rw',
+      ] + soularr_extra_volumes }}
     networks: "{{ soularr_networks if soularr_networks | length > 0 else omit }}"
     restart_policy: unless-stopped
     memory: "{{ soularr_memory }}"
