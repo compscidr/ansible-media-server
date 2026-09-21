@@ -26,11 +26,13 @@
     pull: true
     ports:
       - "{{ sonarr_port }}:8989"
-    volumes:
-      - "{{ sonarr_tv_folder }}:/tv:rw"
-      - "{{ sonarr_sabnzbd_downloads_folder }}:/downloads:rw"
-      - "{{ sonarr_transmissions_downloads_folder }}:/data:rw"
-      - "{{ sonarr_folder }}:/config:rw"
+    volumes: >-
+      {{ [
+        sonarr_tv_folder ~ ':/tv:rw',
+        sonarr_sabnzbd_downloads_folder ~ ':/downloads:rw',
+        sonarr_transmissions_downloads_folder ~ ':/data:rw',
+        sonarr_folder ~ ':/config:rw',
+      ] + sonarr_extra_volumes }}
     env:
       TZ: "{{ sonarr_tz }}"
       PUID: "{{ media_user_uid }}"

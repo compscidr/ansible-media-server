@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.5.0] - 2026-09-20
+
+### Added
+- **Every role with a bind mount** (all but flaresolverr): `<role>_extra_volumes` (default `[]`), a list of extra
+  bind mounts appended to the container's volumes. Lets a data subdirectory of the
+  config folder (slskd's `data/`, the *arr `MediaCover/` and `logs/`) live on a
+  different filesystem while the config path stays put.
+
+### Fixed
+- **jackett**: the config bind mount was missing its `:` (`/etc/jackett/config:rw`
+  instead of `/etc/jackett:/config:rw`).
+
+
 ## [1.4.0] - 2026-04-06
 
 ### Added

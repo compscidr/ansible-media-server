@@ -50,6 +50,16 @@ Use in a playbook:
 ```
 
 # Variables
+Every role that bind-mounts a directory (all but flaresolverr) also takes
+`<role>_extra_volumes` (default `[]`): a list of
+extra docker bind mounts in `src:dst[:mode]` form, appended after the role's own
+mounts. Use it to put a subdirectory of the config folder somewhere else when
+the app stores data (a database, artwork cache, logs) under its config path:
+```
+slskd_extra_volumes:
+  - /volume1/storage/slskd/data:/app/data:rw
+```
+
 Variable                                | Description
 --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 flare_port                              | The port flaresolverr will listen on

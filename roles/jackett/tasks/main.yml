@@ -16,9 +16,11 @@
     name: jackett
     image: lscr.io/linuxserver/jackett:latest
     pull: true
-    volumes:
-      - "{{ jackett_folder }}/config:rw"
-      - "{{ jackett_download_folder }}:/downloads:rw"
+    volumes: >-
+      {{ [
+        jackett_folder ~ ':/config:rw',
+        jackett_download_folder ~ ':/downloads:rw',
+      ] + jackett_extra_volumes }}
     ports:
       - "{{ jackett_port }}:9117"
     env:

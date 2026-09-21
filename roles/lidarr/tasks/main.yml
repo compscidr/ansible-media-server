@@ -26,11 +26,13 @@
     pull: true
     ports:
       - "{{ lidarr_port }}:8686"
-    volumes:
-      - "{{ lidarr_music_folder }}:/music:rw"
-      - "{{ lidarr_sabnzbd_downloads_folder }}:/downloads:rw"
-      - "{{ lidarr_transmission_downloads_folder }}:/data:rw"
-      - "{{ lidarr_folder }}:/config:rw"
+    volumes: >-
+      {{ [
+        lidarr_music_folder ~ ':/music:rw',
+        lidarr_sabnzbd_downloads_folder ~ ':/downloads:rw',
+        lidarr_transmission_downloads_folder ~ ':/data:rw',
+        lidarr_folder ~ ':/config:rw',
+      ] + lidarr_extra_volumes }}
     env:
       TZ: "{{ lidarr_tz }}"
       PUID: "{{ media_user_uid }}"

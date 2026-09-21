@@ -36,11 +36,13 @@
       - "{{ plex_gdm_port3 }}:32413/udp"
       - "{{ plex_gdm_port4 }}:32414/udp"
       - "{{ plex_dlna_server_port }}:32469"
-    volumes:
-      - "{{ plex_folder }}:/config:rw"
-      - "{{ plex_tv_folder }}:/tv:rw"
-      - "{{ plex_movies_folder }}:/movies:rw"
-      - "{{ plex_music_folder }}:/music:rw"
+    volumes: >-
+      {{ [
+        plex_folder ~ ':/config:rw',
+        plex_tv_folder ~ ':/tv:rw',
+        plex_movies_folder ~ ':/movies:rw',
+        plex_music_folder ~ ':/music:rw',
+      ] + plex_extra_volumes }}
     devices: "{{ plex_devices if plex_devices | length > 0 else omit }}"
     env:
       TZ: "{{ plex_tz }}"

@@ -16,9 +16,11 @@
     name: sabnzbd
     image: lscr.io/linuxserver/sabnzbd:latest
     pull: true
-    volumes:
-      - "{{ sabnzbd_folder }}:/config:rw"
-      - "{{ sabnzbd_download_folder }}:/downloads:rw"
+    volumes: >-
+      {{ [
+        sabnzbd_folder ~ ':/config:rw',
+        sabnzbd_download_folder ~ ':/downloads:rw',
+      ] + sabnzbd_extra_volumes }}
     ports:
       - "{{ sabnzbd_port }}:8080"
     env:

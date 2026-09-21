@@ -31,3 +31,8 @@ plex_letsencrypt_email: ""
 plex_network_mode: "bridge"
 # Custom networks (only used when plex_network_mode is "bridge")
 plex_networks: "{{ [{'name': media_storage_network_name}] if media_storage_network_enabled | default(false) else [] }}"
+
+# Extra bind mounts appended to the container's volumes, in docker "src:dst[:mode]"
+# form. Lets a subdirectory of plex_folder (a database, an artwork cache, logs) be
+# placed elsewhere without giving up the config path.
+plex_extra_volumes: []
