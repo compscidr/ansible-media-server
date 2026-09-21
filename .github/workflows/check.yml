@@ -25,6 +25,12 @@ jobs:
     name: Molecule Tests - ${{ matrix.role }}
     runs-on: ubuntu-latest
     strategy:
+      # Twelve runners pulling from lscr.io in the same second trips its
+      # `toomanyrequests` throttle, and with fail-fast one throttled pull
+      # cancelled every other job. Stagger the pulls, and let a throttled
+      # role fail on its own so a rerun only has to repeat that one.
+      max-parallel: 4
+      fail-fast: false
       matrix:
         role:
           - plex
