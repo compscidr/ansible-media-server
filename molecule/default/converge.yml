@@ -65,3 +65,8 @@
       ansible.builtin.include_role:
         name: "soularr"
       when: test_role == "" or test_role == "soularr"
+
+    - name: "Include cleanuparr role"
+      ansible.builtin.include_role:
+        name: "cleanuparr"
+      when: test_role == "" or test_role == "cleanuparr"

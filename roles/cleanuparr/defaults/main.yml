@@ -1,0 +1,22 @@
+---
+# Docker installation control
+cleanuparr_install_docker: false
+
+# Cleanuparr configuration
+cleanuparr_folder: /etc/cleanuparr
+# Mounted at /downloads so the Download Cleaner's orphaned-file scan can see
+# what the download clients wrote. Set the per-client path mapping in the UI
+# if the client sees the same files at a different path.
+cleanuparr_downloads_folder: "{{ media_storage_base_path }}/downloads"
+cleanuparr_port: 11011
+cleanuparr_tz: "America/Los_Angeles"
+cleanuparr_memory: "1g"
+cleanuparr_memory_swap: "1g"
+
+# Docker network (use custom network for container name resolution)
+cleanuparr_networks: "{{ [{'name': media_storage_network_name}] if media_storage_network_enabled | default(false) else [] }}"
+
+# Extra bind mounts appended to the container's volumes, in docker "src:dst[:mode]"
+# form. Lets a subdirectory of cleanuparr_folder (the sqlite database, logs) be
+# placed elsewhere without giving up the config path.
+cleanuparr_extra_volumes: []

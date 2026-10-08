@@ -4,6 +4,7 @@
 [![ansible lint rules](https://img.shields.io/badge/Ansible--lint-rules%20table-blue.svg)](https://ansible.readthedocs.io/projects/lint/rules/)
 
 A collection of roles for running a media server with docker containers:
+- cleanuparr
 - flaresolverr
 - jackett
 - lidarr
@@ -62,6 +63,10 @@ slskd_extra_volumes:
 
 Variable                                | Description
 --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+cleanuparr_folder                       | cleanuparr config folder (sqlite db lives here)
+cleanuparr_downloads_folder             | downloads folder, mounted at /downloads for the orphaned-file scan
+cleanuparr_port                         | the port cleanuparr will listen on
+cleanuparr_tz                           | cleanuparr timezone
 flare_port                              | The port flaresolverr will listen on
 flare_captcha_solver                    | The captcha solver used for flaresolverr
 flare_tz                                | The timezone to use for flaresolverr

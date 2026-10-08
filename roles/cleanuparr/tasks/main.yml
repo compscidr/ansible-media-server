@@ -1,0 +1,41 @@
+---
+- name: Ensure docker is installed on the target system
+  tags: docker
+  ansible.builtin.include_role:
+    name: nickjj.docker
+    apply:
+      become: true
+  when: cleanuparr_install_docker
+
+- name: Create Cleanuparr Directories
+  tags: cleanuparr
+  become: true
+  ansible.builtin.file:
+    path: "{{ cleanuparr_folder }}"
+    state: directory
+    mode: "755"
+    owner: "{{ media_user_uid }}"
+    group: "{{ media_user_gid }}"
+
+- name: Deploy cleanuparr
+  tags: cleanuparr
+  become: true
+  community.docker.docker_container:
+    name: cleanuparr
+    image: ghcr.io/cleanuparr/cleanuparr:latest
+    pull: true
+    ports:
+      - "{{ cleanuparr_port }}:11011"
+    volumes: >-
+      {{ [
+        cleanuparr_folder ~ ':/config:rw',
+        cleanuparr_downloads_folder ~ ':/downloads:rw',
+      ] + cleanuparr_extra_volumes }}
+    env:
+      TZ: "{{ cleanuparr_tz }}"
+      PUID: "{{ media_user_uid }}"
+      PGID: "{{ media_user_gid }}"
+    networks: "{{ cleanuparr_networks if cleanuparr_networks | length > 0 else omit }}"
+    restart_policy: unless-stopped
+    memory: "{{ cleanuparr_memory }}"
+    memory_swap: "{{ cleanuparr_memory_swap }}"
