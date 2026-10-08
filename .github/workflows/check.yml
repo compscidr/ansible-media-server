@@ -45,6 +45,7 @@ jobs:
           - transmission
           - slskd
           - soularr
+          - cleanuparr
     steps:
       - uses: actions/checkout@v7
       

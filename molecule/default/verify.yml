@@ -165,3 +165,17 @@
           - soularr_info.container.State.Status == "running"
         fail_msg: "soularr container is not running"
       when: test_role == "" or test_role == "soularr"
+
+    - name: Check if cleanuparr container is running
+      community.docker.docker_container_info:
+        name: cleanuparr
+      register: cleanuparr_info
+      when: test_role == "" or test_role == "cleanuparr"
+
+    - name: Verify cleanuparr container is running
+      ansible.builtin.assert:
+        that:
+          - cleanuparr_info.exists
+          - cleanuparr_info.container.State.Status == "running"
+        fail_msg: "cleanuparr container is not running"
+      when: test_role == "" or test_role == "cleanuparr"

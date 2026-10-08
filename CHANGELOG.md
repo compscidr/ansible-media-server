@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.6.0] - 2026-10-07
+
+### Added
+- **cleanuparr**: new role running [Cleanuparr](https://github.com/Cleanuparr/Cleanuparr)
+  (`ghcr.io/cleanuparr/cleanuparr`), which removes and blocks stalled, failed-import and
+  malicious downloads across the *arrs and cleans up orphaned files. Config in
+  `cleanuparr_folder`, downloads mounted at `/downloads`, UI on `cleanuparr_port` (11011).
+
 ## [1.5.0] - 2026-09-20
 
 ### Added
