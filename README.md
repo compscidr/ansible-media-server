@@ -149,4 +149,5 @@ transmission_pid                        | the user id for volume permissions
 transmission_gid                        | the group id for volume permissions
 transmission_tz                         | transmission timezone
 transmission_env_file: "{{ transmission_folder }}/.env" | the environment file which contains env variables for things like VPN login credentials, see https://github.com/haugene/docker-transmission-openvpn
+transmission_labels                     | docker labels for the container (default `{}`), e.g. `{autoheal: "true"}` for willfarrell/autoheal
 

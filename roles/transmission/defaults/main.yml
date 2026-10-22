@@ -15,3 +15,7 @@ transmission_networks: "{{ [{'name': media_storage_network_name}] if media_stora
 # form. Lets a subdirectory of transmission_folder (a database, an artwork cache, logs) be
 # placed elsewhere without giving up the config path.
 transmission_extra_volumes: []
+
+# Docker labels on the container, e.g. {autoheal: "true"} so willfarrell/autoheal
+# restarts it when the healthcheck fails (the daemon can die while the VPN stays up).
+transmission_labels: {}
