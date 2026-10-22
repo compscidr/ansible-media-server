@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.7.0] - 2026-10-22
+
+### Added
+- **transmission**: `transmission_labels` (default `{}`), docker labels for the container.
+  Set `{autoheal: "true"}` with willfarrell/autoheal to restart it when the healthcheck
+  fails: a VPN reconnect can kill transmission-daemon while the tunnel stays up, and
+  docker never acts on an unhealthy container by itself.
+
 ## [1.6.0] - 2026-10-07
 
 ### Added
